@@ -3,58 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fit for Advisory | Boutique advisory para PyMEs</title>
-  <meta name="description" content="Boutique advisory para PyMEs. Estrategia, finanzas y ejecución: claridad para decidir, plan para ejecutar." />
-  <meta name="theme-color" content="#F6F7FB" />
+  <meta name="description" content="Fit for Advisory — Boutique advisory for SMEs. Strategy, finance & execution with decision-grade models." />
+  <title>Fit for Advisory</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#f6f7fb;
-      --card:#ffffff;
-      --ink:#0b1220;
-      --muted:#51627b;
-      --muted2:#7a8aa0;
-      --line:#e6ecf3;
-
-      --brand:#e3192a;
-      --brand2:#ff3b4d;
-
-      --shadow: 0 18px 55px rgba(11,18,32,.10);
-      --shadow2: 0 10px 24px rgba(11,18,32,.08);
-
-      --r12:12px; --r16:16px; --r20:20px; --r28:28px; --r32:32px;
-      --max:1120px;
+      --bg: #f6f8ff;
+      --panel: rgba(255,255,255,.72);
+      --panel-strong: rgba(255,255,255,.92);
+      --text: #0e1325;
+      --muted: #5a647a;
+      --muted2:#7b859b;
+      --line: rgba(14,19,37,.10);
+      --shadow: 0 20px 60px rgba(15, 23, 42, .08);
+      --shadow2: 0 14px 36px rgba(15, 23, 42, .10);
+      --accent: #e11d48;   /* red (logo) */
+      --accent2:#2563eb;   /* blue */
+      --good:#0f766e;      /* teal */
+      --warn:#b45309;      /* amber */
+      --radius: 22px;
+      --radius2: 16px;
+      --max: 1160px;
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
       background:
-        radial-gradient(1100px 700px at 50% -10%, rgba(227,25,42,.10), transparent 55%),
-        radial-gradient(900px 600px at 85% 10%, rgba(31,79,216,.08), transparent 55%),
-        radial-gradient(900px 600px at 15% 15%, rgba(227,25,42,.06), transparent 55%),
+        radial-gradient(900px 500px at 20% 10%, rgba(37,99,235,.10), transparent 60%),
+        radial-gradient(900px 500px at 85% 15%, rgba(225,29,72,.10), transparent 65%),
+        radial-gradient(900px 500px at 40% 85%, rgba(15,118,110,.10), transparent 65%),
         var(--bg);
-      line-height:1.65;
       overflow-x:hidden;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px;}
-    .muted{color:var(--muted)}
-    .muted2{color:var(--muted2)}
 
-    /* NAV */
-    .topbar{
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px;}
+    .glass{
+      background:var(--panel);
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: var(--radius);
+    }
+
+    /* Header */
+    header{
       position:sticky; top:0; z-index:50;
-      background:rgba(246,247,251,.82);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--line);
+      background: rgba(246,248,255,.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom:1px solid rgba(14,19,37,.06);
     }
     .nav{
       display:flex; align-items:center; justify-content:space-between;
@@ -62,662 +70,1127 @@
       gap:14px;
     }
     .brand{
-      display:flex; align-items:center; gap:10px;
-      min-width:220px;
+      display:flex; align-items:center; gap:12px; min-width: 220px;
     }
     .brand img{
-      height:40px; width:auto; display:block;
-      /* el PNG transparente hace el trabajo: nada de cápsulas blancas */
-      filter: drop-shadow(0 10px 18px rgba(11,18,32,.12));
+      height:34px; width:auto; display:block;
+      /* Para logos con bordes suaves: */
+      filter: drop-shadow(0 8px 16px rgba(15,23,42,.10));
+    }
+    .brand .sub{
+      display:none;
+      font-size:12px; color:var(--muted2);
     }
 
-    .navlinks{
-      display:flex; gap:14px; align-items:center;
-      font-size:14px; color:var(--muted);
+    nav ul{
+      list-style:none; margin:0; padding:0;
+      display:flex; align-items:center; gap:18px;
     }
-    .navlinks a{padding:6px 10px; border-radius:999px;}
-    .navlinks a:hover{background:rgba(11,18,32,.05); color:var(--ink)}
-
-    .right{display:flex; align-items:center; gap:12px;}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      border:1px solid var(--line);
-      background:#fff;
-      border-radius:999px;
-      padding:6px;
-      box-shadow:var(--shadow2);
-    }
-    .langBtn{
-      border:0; background:transparent; cursor:pointer;
-      font-weight:800; font-size:13px;
-      padding:8px 10px;
-      border-radius:999px;
+    nav a{
+      text-decoration:none;
       color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:12px;
+      transition: background .2s ease, color .2s ease;
     }
-    .langBtn.active{background:#eef2ff; color:var(--ink);}
+    nav a:hover{ background: rgba(37,99,235,.08); color: var(--text); }
 
-    /* Buttons */
+    .actions{display:flex; align-items:center; gap:10px;}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:12px 16px;
-      border-radius:999px;
       border:1px solid var(--line);
-      background:#fff;
-      font-weight:800;
-      box-shadow:var(--shadow2);
+      background: var(--panel-strong);
+      color: var(--text);
+      padding:10px 14px;
+      border-radius: 14px;
+      font-weight:700;
+      font-size:14px;
       cursor:pointer;
-      transition: transform .12s ease;
+      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+      box-shadow: 0 8px 20px rgba(15,23,42,.06);
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
       white-space:nowrap;
     }
-    .btn:hover{transform: translateY(-1px)}
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
     .btn.primary{
-      background:linear-gradient(180deg, var(--brand2), var(--brand));
-      border-color:rgba(227,25,42,.35);
-      color:#fff;
+      border-color: rgba(225,29,72,.22);
+      background: linear-gradient(180deg, rgba(225,29,72,.14), rgba(225,29,72,.08));
     }
-
-    /* HERO */
-    .hero{padding:70px 0 40px;}
-    .heroCenter{
-      text-align:center;
-      max-width:920px;
-      margin:0 auto;
+    .btn.soft{
+      border-color: rgba(37,99,235,.18);
+      background: linear-gradient(180deg, rgba(37,99,235,.12), rgba(37,99,235,.06));
+      color: var(--text);
     }
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
+    .lang{
+      display:flex; align-items:center;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.85);
-      box-shadow:0 10px 24px rgba(11,18,32,.06);
-      color:rgba(11,18,32,.75);
+      background: var(--panel-strong);
+      border-radius: 999px;
+      padding:4px;
+      gap:4px;
+      box-shadow: 0 8px 20px rgba(15,23,42,.06);
+    }
+    .lang button{
+      border:0; background:transparent;
+      padding:8px 10px;
+      border-radius: 999px;
       font-weight:800;
       font-size:13px;
+      color: var(--muted);
+      cursor:pointer;
     }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background:var(--brand);
-      box-shadow:0 0 0 6px rgba(227,25,42,.12);
-    }
-    h1{
-      font-size:clamp(34px,4.2vw,60px);
-      line-height:1.06;
-      letter-spacing:-.03em;
-      margin:18px 0 12px;
-    }
-    .sub{
-      font-size:18px;
-      color:var(--muted);
-      margin:0 auto;
-      max-width:82ch;
-    }
-    .actions{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:22px;}
-
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap:16px;
-      margin-top:28px;
-    }
-    @media(max-width:980px){.heroGrid{grid-template-columns:1fr}}
-    .mini{
-      background:rgba(255,255,255,.92);
-      border:1px solid var(--line);
-      border-radius:var(--r20);
-      padding:18px;
-      box-shadow:var(--shadow2);
-      text-align:left;
-    }
-    .mini b{display:block; margin-bottom:6px; letter-spacing:-.01em}
-    .mini p{margin:0; color:var(--muted)}
-    .mini .tag{
-      display:inline-flex; align-items:center; gap:8px;
-      font-size:12px; font-weight:900; letter-spacing:.06em;
-      text-transform:uppercase;
-      color:rgba(11,18,32,.55);
-      margin-bottom:10px;
+    .lang button.active{
+      background: rgba(14,19,37,.06);
+      color: var(--text);
     }
 
-    /* SECTIONS */
-    section{padding:70px 0}
-    h2{
-      font-size:clamp(26px,3vw,40px);
-      margin:0 0 12px;
-      letter-spacing:-.02em;
-      text-align:center;
+    /* Hero */
+    .hero{
+      padding:54px 0 26px;
     }
-    .lead{
-      color:var(--muted);
-      max-width:92ch;
-      margin:0 auto;
-      text-align:center;
-    }
-
-    .grid3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-top:28px;
-    }
-    @media(max-width:980px){.grid3{grid-template-columns:1fr}}
-
-    .card{
-      background:rgba(255,255,255,.92);
-      border:1px solid var(--line);
-      border-radius:var(--r28);
-      padding:22px;
-      box-shadow:var(--shadow2);
-    }
-    .cardHead{
-      display:flex; align-items:center; gap:12px; margin-bottom:10px;
-    }
-    .iconBox{
-      width:44px; height:44px;
-      border-radius:14px;
-      background: linear-gradient(180deg, rgba(227,25,42,.10), rgba(31,79,216,.08));
-      border:1px solid rgba(11,18,32,.08);
-      display:flex; align-items:center; justify-content:center;
-    }
-    .svg{
-      width:22px; height:22px;
-      stroke: rgba(11,18,32,.78);
-      stroke-width:2;
-      fill:none;
-      stroke-linecap:round; stroke-linejoin:round;
-    }
-    .card h3{margin:0; letter-spacing:-.01em}
-    .card p{margin:8px 0 0; color:var(--muted)}
-
-    .split{
+    .hero-grid{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
-      gap:18px;
-      margin-top:28px;
+      gap:24px;
       align-items:stretch;
     }
-    @media(max-width:980px){.split{grid-template-columns:1fr}}
-
-    .panel{
-      background:rgba(255,255,255,.92);
-      border:1px solid var(--line);
-      border-radius:var(--r32);
-      padding:24px;
-      box-shadow:var(--shadow);
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      nav ul{display:none;}
+      .brand .sub{display:none;}
     }
-    .panel h3{margin:0 0 10px; letter-spacing:-.01em}
-    .bullets{margin:12px 0 0; padding:0 0 0 18px; color:var(--muted)}
-    .bullets li{margin:8px 0}
 
-    .callout{
-      margin-top:16px;
-      border-radius:var(--r20);
-      border:1px solid rgba(22,163,74,.20);
-      background:rgba(22,163,74,.08);
-      padding:16px;
-      color:rgba(11,18,32,.82);
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:12px;
+      color: rgba(14,19,37,.72);
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(14,19,37,.10);
+      background: rgba(255,255,255,.65);
     }
-    .callout b{display:block; margin-bottom:6px}
-
-    /* CONTACT + Calendly (discreto, más abajo) */
-    .contactWrap{
-      margin-top:26px;
-      display:grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap:18px;
-      align-items:start;
+    .kicker .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 8px 18px rgba(225,29,72,.20);
     }
-    @media(max-width:980px){.contactWrap{grid-template-columns:1fr}}
 
-    .contactCard{
-      background:rgba(255,255,255,.92);
-      border:1px solid var(--line);
-      border-radius:var(--r32);
-      padding:22px;
-      box-shadow:var(--shadow2);
+    h1{
+      font-family: Fraunces, serif;
+      font-weight:700;
+      letter-spacing:-.02em;
+      line-height:1.05;
+      font-size:56px;
+      margin:16px 0 14px;
     }
-    .contactCard .btn{width:100%}
-
-    .calBox{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:var(--r32);
-      overflow:hidden;
-      box-shadow:var(--shadow2);
+    @media (max-width: 520px){
+      h1{font-size:42px;}
     }
-    .calBox .calendly-inline-widget{min-width:320px; height:640px;}
-    @media(max-width:980px){.calBox .calendly-inline-widget{height:720px;}}
-
-    footer{
-      padding:26px 0;
-      border-top:1px solid var(--line);
-      color:var(--muted2);
+    .lead{
+      font-size:17px;
+      line-height:1.65;
+      color: var(--muted);
+      max-width: 62ch;
+      margin: 0 0 18px;
+    }
+    .lead strong{color:var(--text)}
+    .hero-ctas{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+    .note{
+      margin-top:14px;
+      color: var(--muted2);
       font-size:13px;
-      text-align:center;
+      line-height:1.5;
+      max-width: 70ch;
     }
 
-    /* Reveal */
-    .reveal{opacity:0; transform:translateY(10px); transition:opacity .55s ease, transform .55s ease;}
-    .reveal.on{opacity:1; transform:translateY(0);}
+    /* Right card */
+    .pain{
+      padding:18px 18px 16px;
+      border-radius: var(--radius);
+    }
+    .pain-head{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+      margin-bottom:12px;
+    }
+    .pain-title{
+      font-weight:900;
+      font-size:16px;
+    }
+    .pain-sub{
+      color:var(--muted2);
+      font-size:13px; margin-top:4px;
+    }
+    .grid4{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+    .mini{
+      background: rgba(255,255,255,.70);
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding:14px 14px 12px;
+      min-height: 110px;
+      box-shadow: 0 10px 24px rgba(15,23,42,.06);
+    }
+    .mini .cap{
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color: var(--muted2);
+      font-weight:800;
+      margin-bottom:8px;
+    }
+    .mini h4{
+      margin:0 0 8px;
+      font-size:16px;
+      letter-spacing:-.01em;
+    }
+    .mini p{
+      margin:0;
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .outcome{
+      margin-top:12px;
+      padding:14px;
+      border-radius: 16px;
+      border:1px solid rgba(15,118,110,.18);
+      background: linear-gradient(180deg, rgba(15,118,110,.10), rgba(15,118,110,.06));
+    }
+    .outcome strong{display:block; margin-bottom:6px;}
+    .outcome span{color:var(--muted); font-size:13px; line-height:1.6;}
 
-    @media (prefers-reduced-motion: reduce) {
-      *{scroll-behavior:auto}
-      .btn{transition:none}
-      .btn:hover{transform:none}
-      .reveal{transition:none}
+    /* Sections */
+    section{ padding:38px 0; }
+    .sec-head{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:18px;
+      margin-bottom:18px;
+    }
+    .sec-head h2{
+      margin:0;
+      font-size:28px;
+      letter-spacing:-.02em;
+    }
+    .sec-head p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.6;
+      max-width: 70ch;
+    }
+    .cards3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 980px){ .cards3{grid-template-columns:1fr;} }
+    .card{
+      padding:18px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.70);
+      border:1px solid var(--line);
+      box-shadow: 0 14px 34px rgba(15,23,42,.06);
+    }
+    .card h3{
+      margin:10px 0 10px;
+      font-size:18px;
+      letter-spacing:-.01em;
+    }
+    .card p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.65;
+      font-size:14px;
+    }
+    .ico{
+      width:42px; height:42px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      border:1px solid rgba(14,19,37,.10);
+      background: linear-gradient(180deg, rgba(37,99,235,.10), rgba(255,255,255,.60));
+    }
+    .ico svg{ width:22px; height:22px; opacity:.95; }
+
+    /* Method steps */
+    .steps{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .steps{grid-template-columns:1fr;} }
+    .step{
+      padding:18px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.70);
+      border:1px solid var(--line);
+      box-shadow: 0 14px 34px rgba(15,23,42,.06);
+    }
+    .step .tag{
+      display:inline-flex; align-items:center; gap:10px;
+      font-weight:900;
+      font-size:13px;
+      color: rgba(14,19,37,.86);
+      border:1px solid rgba(14,19,37,.10);
+      background: rgba(255,255,255,.70);
+      padding:10px 12px;
+      border-radius: 999px;
+      margin-bottom:10px;
+    }
+    .tag .n{
+      width:26px; height:26px;
+      border-radius: 999px;
+      display:grid; place-items:center;
+      background: rgba(37,99,235,.10);
+      border:1px solid rgba(37,99,235,.18);
+      font-weight:900;
+    }
+    .bullets{ margin-top:12px; display:grid; gap:10px; }
+    .bullet{
+      padding:12px 12px;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .bullet .tick{
+      width:26px; height:26px;
+      border-radius: 10px;
+      display:grid; place-items:center;
+      background: rgba(15,118,110,.10);
+      border:1px solid rgba(15,118,110,.18);
+      flex: 0 0 auto;
+      margin-top:2px;
+    }
+    .bullet .tick svg{width:16px; height:16px;}
+    .bullet b{display:block; margin-bottom:4px;}
+    .bullet span{ color: var(--muted); font-size:13px; line-height:1.55; }
+
+    /* “Best for” */
+    .best{
+      padding:20px;
+      border-radius: var(--radius);
+      border:1px solid rgba(225,29,72,.18);
+      background: linear-gradient(180deg, rgba(225,29,72,.10), rgba(255,255,255,.65));
+      box-shadow: 0 18px 44px rgba(225,29,72,.08);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .best h3{ margin:0; font-size:18px; }
+    .best p{ margin:6px 0 0; color: var(--muted); line-height:1.6; max-width: 80ch; }
+
+    /* Insights */
+    .insights{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 980px){ .insights{grid-template-columns:1fr;} }
+    .ins{
+      padding:18px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.70);
+      border:1px solid var(--line);
+      box-shadow: 0 14px 34px rgba(15,23,42,.06);
+    }
+    .ins h4{ margin:0 0 10px; font-size:17px; }
+    .ins p{ margin:0; color: var(--muted); line-height:1.7; font-size:14px; }
+
+    /* Contact + Calendly */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .contact-grid{grid-template-columns:1fr;} }
+    .contact-card{
+      padding:18px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.70);
+      border:1px solid var(--line);
+      box-shadow: 0 14px 34px rgba(15,23,42,.06);
+    }
+    .contact-card h3{ margin:0 0 8px; }
+    .contact-card p{ margin:0 0 14px; color: var(--muted); line-height:1.7; }
+    .pill{
+      display:flex; align-items:center; gap:10px;
+      padding:12px 12px;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      margin:12px 0;
+      font-weight:700;
+    }
+    .pill small{display:block; font-weight:700; color: var(--muted2);}
+    .pill b{display:block;}
+    .cal-wrap{
+      padding:16px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.70);
+      border:1px solid var(--line);
+      box-shadow: 0 14px 34px rgba(15,23,42,.06);
+      overflow:hidden;
+    }
+    .cal-top{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
+      margin-bottom:10px;
+    }
+    .cal-top h3{margin:0;}
+    .cal-top p{margin:0; color:var(--muted2); font-size:13px;}
+    iframe{border:0; width:100%; border-radius: 16px; background:white;}
+
+    /* Footer */
+    footer{
+      padding:22px 0 34px;
+      color: var(--muted2);
+      font-size:13px;
+    }
+
+    /* Small animation */
+    .fade-in{
+      animation: rise .6s ease both;
+    }
+    @keyframes rise{
+      from{opacity:0; transform: translateY(10px);}
+      to{opacity:1; transform: translateY(0);}
     }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="wrap nav">
-      <div class="brand">
-        <img src="logo.png" alt="Fit for Advisory">
-      </div>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">
+          <!-- LOGO: subí PNG transparente como "logo.png" -->
+          <img src="logo.png" alt="Fit for Advisory">
+          <div class="sub" data-i="nav.tagline">Boutique advisory for SMEs</div>
+        </div>
 
-      <div class="navlinks">
-        <a href="#services" data-t="nav_services">Servicios</a>
-        <a href="#method" data-t="nav_method">Método</a>
-        <a href="#insights" data-t="nav_insights">Insights</a>
-        <a href="#contact" data-t="nav_contact">Contactar</a>
-      </div>
+        <nav aria-label="primary">
+          <ul>
+            <li><a href="#services" data-i="nav.services">Servicios</a></li>
+            <li><a href="#method" data-i="nav.method">Método</a></li>
+            <li><a href="#insights" data-i="nav.insights">Insights</a></li>
+            <li><a href="#contact" data-i="nav.contact">Contactar</a></li>
+          </ul>
+        </nav>
 
-      <div class="right">
-        <div class="pill">
-          <button class="langBtn active" id="btn-es" onclick="setLang('es')">ES</button>
-          <button class="langBtn" id="btn-en" onclick="setLang('en')">EN</button>
+        <div class="actions">
+          <a class="btn soft" href="#contact" data-i="nav.cta">Agendar</a>
+          <div class="lang" aria-label="language toggle">
+            <button id="btn-es" class="active" type="button">ES</button>
+            <button id="btn-en" type="button">EN</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </header>
 
-  <!-- HERO (centrado estilo referencia) -->
-  <section class="hero" id="top">
-    <div class="wrap heroCenter reveal">
-      <div class="kicker">
-        <span class="dot"></span>
-        <span data-t="hero_kicker">Boutique advisory para PyMEs · Estrategia & Finanzas</span>
-      </div>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
 
-      <h1 data-t="hero_title">Podemos ayudarte a ordenar el negocio y ejecutar decisiones con impacto.</h1>
-
-      <p class="sub" data-t="hero_sub">
-        Convertimos datos dispersos en una narrativa ejecutiva: <b>qué pasa</b>, <b>por qué pasa</b> y <b>qué hacer ahora</b>.
-        Sin burocracia. Con escenarios, prioridades y un plan de ejecución.
-      </p>
-
-      <div class="actions">
-        <a class="btn primary" href="mailto:contact@fitforadvisory.com" data-t="cta_email">Contactar por email</a>
-        <a class="btn" href="#contact" data-t="cta_schedule">Agendar una reunión</a>
-      </div>
-
-      <div class="heroGrid">
-        <div class="mini">
-          <div class="tag" data-t="m1_tag">Señal típica</div>
-          <b data-t="m1_title">Se vende, pero la caja no aparece</b>
-          <p data-t="m1_body">Crecimiento sin diseño de capital de trabajo, pricing o disciplina de seguimiento.</p>
-        </div>
-        <div class="mini">
-          <div class="tag" data-t="m2_tag">Señal típica</div>
-          <b data-t="m2_title">Márgenes “raros” y decisiones tardías</b>
-          <p data-t="m2_body">Falta de visibilidad por producto/canal/cliente y reportes manuales poco confiables.</p>
-        </div>
-        <div class="mini">
-          <div class="tag" data-t="m3_tag">Resultado buscado</div>
-          <b data-t="m3_title">Claridad + escenarios + plan</b>
-          <p data-t="m3_body">Drivers claros, sensibilidad, prioridades y una hoja de ruta ejecutable.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="wrap reveal">
-      <h2 data-t="services_title">Servicios</h2>
-      <p class="lead" data-t="services_lead">
-        Nuestro foco es el análisis económico-financiero y del modelo de negocio, con apoyo de un equipo multidisciplinario
-        para cubrir necesidades punta a punta (según la etapa y el desafío).
-      </p>
-
-      <div class="grid3">
-        <div class="card">
-          <div class="cardHead">
-            <div class="iconBox" aria-hidden="true">
-              <!-- Trending up -->
-              <svg class="svg" viewBox="0 0 24 24">
-                <path d="M3 17l7-7 4 4 7-7"></path>
-                <path d="M21 10V3h-7"></path>
-              </svg>
+          <div class="fade-in">
+            <div class="kicker">
+              <span class="dot" aria-hidden="true"></span>
+              <span data-i="hero.kicker">Boutique advisory para PyMEs · Estrategia, Finanzas & Ejecución</span>
             </div>
-            <h3 data-t="s1_title">Rentabilidad & pricing</h3>
-          </div>
-          <p data-t="s1_body">Márgenes, mix y palancas. Visibilidad por producto/canal/cliente para decidir sin intuición.</p>
-        </div>
 
-        <div class="card">
-          <div class="cardHead">
-            <div class="iconBox" aria-hidden="true">
-              <!-- Wallet -->
-              <svg class="svg" viewBox="0 0 24 24">
-                <path d="M3 7h18v14H3z"></path>
-                <path d="M3 7l2-3h14l2 3"></path>
-                <path d="M16 14h5"></path>
-              </svg>
+            <h1 data-i="hero.h1">Decisiones con fundamento.<br/>Claridad para ejecutar.</h1>
+
+            <p class="lead" data-i="hero.lead">
+              Cuando el negocio crece, los problemas se vuelven difusos: <strong>márgenes</strong>, <strong>caja</strong>, <strong>pricing</strong>, inversión y prioridades.
+              Nosotros lo convertimos en un <strong>modelo</strong> y un <strong>plan</strong> que puedas defender y ejecutar.
+            </p>
+
+            <div class="hero-ctas">
+              <a class="btn primary" id="emailBtn" href="mailto:contact@fitforadvisory.com" data-i="hero.ctaEmail">Escribir por email</a>
+              <a class="btn" id="meetBtn" href="#contact" data-i="hero.ctaMeet">Agendar una conversación</a>
+              <a class="btn" href="#services" data-i="hero.ctaServices">Ver servicios</a>
             </div>
-            <h3 data-t="s2_title">Caja & capital de trabajo</h3>
+
+            <div class="note" data-i="hero.note">
+              Trabajamos con enfoque ejecutivo y “decision-grade”: Power Query / Excel, simulaciones, sensibilidad, estadística y regresiones para respaldar escenarios con datos reales.
+              Entregables claros, sin consultoría pesada.
+            </div>
           </div>
-          <p data-t="s2_body">Forecast, políticas de cobro/pago, deuda, alertas tempranas y rutina de control.</p>
+
+          <div class="glass pain fade-in" style="animation-delay:.05s;">
+            <div class="pain-head">
+              <div>
+                <div class="pain-title" data-i="hero.rightTitle">Señales típicas en PyMEs</div>
+                <div class="pain-sub" data-i="hero.rightSub">Cuando todo “funciona”, pero nadie puede explicar por qué.</div>
+              </div>
+            </div>
+
+            <div class="grid4">
+              <div class="mini">
+                <div class="cap" data-i="hero.box1cap">Rentabilidad</div>
+                <h4 data-i="hero.box1h">Márgenes “raros”</h4>
+                <p data-i="hero.box1p">No está claro qué producto/canal/cliente financia al resto.</p>
+              </div>
+              <div class="mini">
+                <div class="cap" data-i="hero.box2cap">Caja</div>
+                <h4 data-i="hero.box2h">Estrés recurrente</h4>
+                <p data-i="hero.box2p">La decisión llega tarde: faltan forecast y gatillos.</p>
+              </div>
+              <div class="mini">
+                <div class="cap" data-i="hero.box3cap">Crecimiento</div>
+                <h4 data-i="hero.box3h">Inversión sin escenarios</h4>
+                <p data-i="hero.box3p">Se decide por intuición, sin sensibilidad ni rangos.</p>
+              </div>
+              <div class="mini">
+                <div class="cap" data-i="hero.box4cap">Gestión</div>
+                <h4 data-i="hero.box4h">Reportes manuales</h4>
+                <p data-i="hero.box4p">Planillas lentas, errores y poca trazabilidad.</p>
+              </div>
+            </div>
+
+            <div class="outcome">
+              <strong data-i="hero.outcomeTitle">Resultado esperado</strong>
+              <span data-i="hero.outcomeText">
+                Diagnóstico claro + modelo con escenarios + plan de decisiones priorizado.
+                Listo para ejecutar y monitorear.
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- “APORTE” (Golden circle adaptado) -->
+    <section id="contribution">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <h2 data-i="contrib.h2">Nuestro aporte</h2>
+            <p data-i="contrib.p">
+              No vendemos “reportes”. Vendemos claridad para decidir: qué pasa, por qué pasa y qué hacer ahora.
+            </p>
+          </div>
         </div>
 
-        <div class="card">
-          <div class="cardHead">
-            <div class="iconBox" aria-hidden="true">
-              <!-- Compass -->
-              <svg class="svg" viewBox="0 0 24 24">
+        <div class="cards3">
+          <div class="card">
+            <div class="ico" aria-hidden="true">
+              <!-- compass -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="9"></circle>
-                <path d="M14.5 9.5l-2 6-6 2 2-6z"></path>
+                <path d="M14.5 9.5 13 13l-3.5 1.5L11 11z"></path>
               </svg>
             </div>
-            <h3 data-t="s3_title">Proyectos, valuación & M&A</h3>
+            <h3 data-i="contrib.c1h">Propósito: bajar el ruido</h3>
+            <p data-i="contrib.c1p">
+              En PyMEs, la urgencia tapa las causas. Ordenamos la información, separamos síntomas de drivers y priorizamos decisiones.
+            </p>
           </div>
-          <p data-t="s3_body">Business cases, valuación, sensibilidad, due diligence económico y soporte a decisiones de crecimiento.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- METHOD (sin “globitos raros”, más “pro”) -->
-  <section id="method">
-    <div class="wrap reveal">
-      <h2 data-t="method_title">Método</h2>
-      <p class="lead" data-t="method_lead">
-        No vendemos reportes. Vendemos un proceso corto que te deja con decisiones claras y un plan que se puede ejecutar.
-      </p>
-
-      <div class="split">
-        <div class="panel">
-          <h3 data-t="meth_left_title">Qué hacemos en la práctica</h3>
-          <ul class="bullets" data-t="meth_left_list">
-            <li>Relevamiento ágil: entendemos el negocio, sus fricciones y objetivos.</li>
-            <li>Drivers: qué explica márgenes, caja y crecimiento (sin “misterios”).</li>
-            <li>Escenarios y sensibilidad: rangos, supuestos y gatillos de decisión.</li>
-            <li>Prioridades: quick wins vs cambios estructurales, con responsables y fechas.</li>
-          </ul>
-
-          <div class="callout">
-            <b data-t="callout_title">Entregable ejecutivo</b>
-            <span class="muted" data-t="callout_body">Documento + modelo simple de operar + plan de acción (foco en decisión, no en presentación).</span>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h3 data-t="meth_right_title">Para quién funciona mejor</h3>
-          <ul class="bullets" data-t="meth_right_list">
-            <li>Dueños/Directores que necesitan claridad sin sumar estructura fija.</li>
-            <li>Equipos que quieren alinear números con estrategia y ejecución.</li>
-            <li>Empresas con reportes manuales y poca confianza en la data.</li>
-            <li>Decisiones grandes en puerta: inversión, pricing, expansión, M&A.</li>
-          </ul>
-
-          <div class="callout" style="border-color: rgba(227,25,42,.22); background: rgba(227,25,42,.06);">
-            <b data-t="callout2_title">Diferencial</b>
-            <span class="muted" data-t="callout2_body">Pensamiento de consultora, agilidad boutique. Técnica + criterio + acompañamiento real.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INSIGHTS (sin numeritos, más texto) -->
-  <section id="insights">
-    <div class="wrap reveal">
-      <h2 data-t="ins_title">Insights</h2>
-      <p class="lead" data-t="ins_lead">
-        Ideas accionables para dueños y equipos directivos. Menos ruido. Más criterio compartido.
-      </p>
-
-      <div class="grid3">
-        <div class="card">
-          <div class="cardHead">
-            <div class="iconBox" aria-hidden="true">
-              <!-- Layers -->
-              <svg class="svg" viewBox="0 0 24 24">
-                <path d="M12 2l9 5-9 5-9-5z"></path>
-                <path d="M3 12l9 5 9-5"></path>
-                <path d="M3 17l9 5 9-5"></path>
-              </svg>
-            </div>
-            <h3 data-t="i1_title">Rentabilidad ≠ ventas</h3>
-          </div>
-          <p data-t="i1_body">
-            Crecer sin entender contribución por producto/cliente suele amplificar el problema de caja.
-            Primero visibilidad (margen, mix, pricing), después escala.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="cardHead">
-            <div class="iconBox" aria-hidden="true">
-              <!-- Shield check -->
-              <svg class="svg" viewBox="0 0 24 24">
-                <path d="M12 2l8 4v6c0 5-3 9-8 10C7 21 4 17 4 12V6z"></path>
-                <path d="M8 12l2.5 2.5L16 9"></path>
-              </svg>
-            </div>
-            <h3 data-t="i2_title">La caja se diseña</h3>
-          </div>
-          <p data-t="i2_body">
-            Forecast + políticas simples + disciplina de seguimiento generan previsibilidad.
-            La previsibilidad baja el estrés y mejora la negociación con clientes y proveedores.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="cardHead">
-            <div class="iconBox" aria-hidden="true">
-              <!-- Sliders -->
-              <svg class="svg" viewBox="0 0 24 24">
+          <div class="card">
+            <div class="ico" aria-hidden="true">
+              <!-- sliders -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 21v-7"></path><path d="M4 10V3"></path><path d="M12 21v-9"></path><path d="M12 8V3"></path><path d="M20 21v-5"></path><path d="M20 12V3"></path>
                 <path d="M2 10h4"></path><path d="M10 8h4"></path><path d="M18 12h4"></path>
               </svg>
             </div>
-            <h3 data-t="i3_title">Escenarios > opiniones</h3>
+            <h3 data-i="contrib.c2h">Método: escenarios + gatillos</h3>
+            <p data-i="contrib.c2p">
+              Modelos simples de operar, robustos de fondo: sensibilidad, rangos y triggers para transformar estrategia en acción.
+            </p>
           </div>
-          <p data-t="i3_body">
-            Rangos, sensibilidad y gatillos vuelven objetiva la decisión.
-            Menos “sensación del día”, más criterio compartido y repetible para ejecutar.
-          </p>
+
+          <div class="card">
+            <div class="ico" aria-hidden="true">
+              <!-- file-check -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 2v6h6"></path>
+                <path d="M9 15l2 2 4-4"></path>
+              </svg>
+            </div>
+            <h3 data-i="contrib.c3h">Entregables: diagnóstico + plan</h3>
+            <p data-i="contrib.c3p">
+              Rentabilidad, caja, pricing, inversión/valuación y soporte a decisiones (incluyendo M&A cuando aplica). Siempre “tailor-made”.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT (Calendly abajo y discreto) -->
-  <section id="contact">
-    <div class="wrap reveal">
-      <h2 data-t="contact_title">Contacto</h2>
-      <p class="lead" data-t="contact_lead">
-        Si querés, agendá una conversación breve. Si preferís email, escribinos con contexto y 2–3 opciones de horario.
-      </p>
-
-      <div class="contactWrap">
-        <div class="contactCard">
-          <h3 style="margin:0 0 10px; letter-spacing:-.01em" data-t="contact_box_title">Hablemos</h3>
-          <p class="muted" style="margin:0 0 16px" data-t="contact_box_body">
-            Respuesta rápida. Confidencialidad y foco en decisiones. Ideal para dueños y equipos directivos.
-          </p>
-
-          <a class="btn primary" href="mailto:contact@fitforadvisory.com" data-t="contact_email_btn">Escribir a contact@fitforadvisory.com</a>
-
-          <p class="muted2" style="margin:14px 0 0; font-size:13px" data-t="contact_note">
-            Tip: contanos tu industria, tamaño aproximado y cuál es la decisión que querés destrabar.
-          </p>
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <h2 data-i="services.h2">Servicios</h2>
+            <p data-i="services.p">
+              Bloques que combinamos según tu caso. El foco es el análisis económico-financiero y del modelo de negocio,
+              con soporte de un equipo multidisciplinario para un delivery punta a punta.
+            </p>
+          </div>
         </div>
 
-        <div class="calBox" aria-label="Calendly scheduling">
-          <div class="calendly-inline-widget" data-url="https://calendly.com/fitforadvisory/meet?hide_gdpr_banner=1"></div>
-          <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <div class="cards3">
+          <div class="card">
+            <div class="ico" aria-hidden="true">
+              <!-- chart -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"></path>
+                <path d="M7 14l3-3 4 4 5-7"></path>
+              </svg>
+            </div>
+            <h3 data-i="services.s1h">Rentabilidad & pricing</h3>
+            <p data-i="services.s1p">
+              Márgenes, mix y palancas: producto/canal/cliente, estructura de costos, pricing y unit economics.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="ico" aria-hidden="true">
+              <!-- wallet -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 7H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                <path d="M16 7V5a2 2 0 0 0-2-2H6"></path>
+                <path d="M18 12h2"></path>
+              </svg>
+            </div>
+            <h3 data-i="services.s2h">Caja & capital de trabajo</h3>
+            <p data-i="services.s2p">
+              Forecast con escenarios: cobros/pagos, deuda, políticas, alertas tempranas y disciplina de seguimiento.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="ico" aria-hidden="true">
+              <!-- spark -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l1.2 5.2L18 9l-4.8 1.8L12 16l-1.2-5.2L6 9l4.8-1.8z"></path>
+                <path d="M19 13l.7 3 2.3.9-2.3.9-.7 3-.7-3-2.3-.9 2.3-.9z"></path>
+              </svg>
+            </div>
+            <h3 data-i="services.s3h">Proyectos & valuación</h3>
+            <p data-i="services.s3p">
+              Evaluación de proyectos, casos de negocio, due diligence económico y soporte para decisiones de crecimiento (incluye M&A).
+            </p>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="best">
+          <div>
+            <h3 data-i="best.h3">Cuándo esto funciona mejor</h3>
+            <p data-i="best.p">
+              Cuando necesitás claridad rápida para decidir: caída de caja, discusión de precios/márgenes, inversión, expansión o “crecer sin romper”.
+              Si el problema “se siente” pero no se puede cuantificar, solemos destrabarlo en semanas.
+            </p>
+          </div>
+          <a class="btn primary" href="#contact" data-i="best.cta">Agendar una conversación</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    © Fit for Advisory — <a href="mailto:contact@fitforadvisory.com">contact@fitforadvisory.com</a>
-  </footer>
+    <!-- METHOD -->
+    <section id="method">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <h2 data-i="method.h2">Cómo trabajamos</h2>
+            <p data-i="method.p">
+              Proceso simple, ejecutivo. El objetivo no es “analizar por analizar”, sino convertir datos en decisiones accionables.
+            </p>
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="tag"><span class="n">1</span><span data-i="method.aTitle">Diagnóstico</span></div>
+            <p data-i="method.aText">Relevamiento breve, hipótesis y validación con datos. Identificamos drivers y quick wins vs. cambios estructurales.</p>
+            <div class="bullets">
+              <div class="bullet">
+                <div class="tick" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <b data-i="method.aB1">Mapa económico</b>
+                  <span data-i="method.aS1">Drivers, márgenes, estructura y caja.</span>
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="tick" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <b data-i="method.aB2">Datos “decision-grade”</b>
+                  <span data-i="method.aS2">Definimos qué medir, cómo y con qué periodicidad.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="tag"><span class="n">2</span><span data-i="method.bTitle">Solución a medida</span></div>
+            <p data-i="method.bText">Modelo con escenarios y sensibilidad. Recomendaciones accionables y paquete ejecutivo para decidir.</p>
+            <div class="bullets">
+              <div class="bullet">
+                <div class="tick" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <b data-i="method.bB1">Escenarios + sensibilidad</b>
+                  <span data-i="method.bS1">Precios, volumen, costos, plazos, FX.</span>
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="tick" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <b data-i="method.bB2">Gatillos de decisión</b>
+                  <span data-i="method.bS2">Rangos y thresholds para actuar a tiempo.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="tag"><span class="n">3</span><span data-i="method.cTitle">Seguimiento</span></div>
+            <p data-i="method.cText">Cadencia liviana. Ajustes, control de desvíos y soporte en decisiones de inversión/crecimiento.</p>
+            <div class="bullets">
+              <div class="bullet">
+                <div class="tick" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <b data-i="method.cB1">Tablero ejecutivo</b>
+                  <span data-i="method.cS1">Pocos indicadores, bien definidos y accionables.</span>
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="tick" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <b data-i="method.cB2">Decisiones con soporte</b>
+                  <span data-i="method.cS2">Crecimiento, inversión, financiamiento, M&A cuando aplica.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="tag"><span class="n">+</span><span data-i="method.dTitle">Equipo multidisciplinario</span></div>
+            <p data-i="method.dText">
+              Operamos como boutique: liderazgo analítico económico-financiero + equipo complementario (impuestos, legal, procesos, comercial y sistemas) para proyectos puntuales.
+              La coordinación y el estándar de entrega es único.
+            </p>
+            <p style="margin:10px 0 0; color:var(--muted2); font-size:13px; line-height:1.6" data-i="method.dFoot">
+              Trabajamos remoto y con confidencialidad. Sin exponer el “backstage”: la marca es Fit for Advisory.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIGHTS -->
+    <section id="insights">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <h2 data-i="ins.h2">Insights</h2>
+            <p data-i="ins.p">
+              Ideas cortas, accionables y orientadas a decisión. Útiles para founders y equipos directivos (sin teoría de más).
+            </p>
+          </div>
+        </div>
+
+        <div class="insights">
+          <div class="ins">
+            <h4 data-i="ins.i1h">Rentabilidad ≠ ventas</h4>
+            <p data-i="ins.i1p">
+              Crecer sin estructura de márgenes y costos suele aumentar el estrés de caja. El primer paso es mapear
+              contribución por producto/canal/cliente y detectar “subsidios” invisibles.
+            </p>
+          </div>
+
+          <div class="ins">
+            <h4 data-i="ins.i2h">La caja se diseña</h4>
+            <p data-i="ins.i2p">
+              Forecast + políticas de cobro/pago + disciplina de seguimiento. No es “suerte”.
+              Con escenarios y triggers, el equipo actúa antes de que el problema sea urgente.
+            </p>
+          </div>
+
+          <div class="ins">
+            <h4 data-i="ins.i3h">Escenarios &gt; opiniones</h4>
+            <p data-i="ins.i3p">
+              Cuando el negocio es sensible, el escenario manda: rangos, sensibilidad y supuestos explícitos.
+              La conversación deja de ser “creo que” y pasa a ser “si pasa X, hacemos Y”.
+            </p>
+          </div>
+
+          <div class="ins">
+            <h4 data-i="ins.i4h">Menos tablero, más decisión</h4>
+            <p data-i="ins.i4p">
+              Un tablero ejecutivo sirve si dispara acciones. Pocos indicadores, bien definidos, con periodicidad y responsables.
+              La visualización es el final: primero se define el “sistema de decisión”.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT + CALENDLY -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <h2 data-i="contact.h2">Hablemos</h2>
+            <p data-i="contact.p">
+              Si querés, arrancamos por una conversación corta: contexto, problemas, objetivos y próximos pasos.
+              Si tiene sentido, preparamos una propuesta a medida.
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3 data-i="contact.leftH">Contacto</h3>
+            <p data-i="contact.leftP">
+              Escribinos por email (en ES o EN). Respuesta en 24–48h hábiles.
+            </p>
+
+            <div class="pill">
+              <div style="width:34px;height:34px;border-radius:14px;display:grid;place-items:center;background:rgba(37,99,235,.10);border:1px solid rgba(37,99,235,.18);" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16v16H4z"></path>
+                  <path d="m22 6-10 7L2 6"></path>
+                </svg>
+              </div>
+              <div>
+                <small data-i="contact.emailLabel">Email</small>
+                <b>contact@fitforadvisory.com</b>
+              </div>
+            </div>
+
+            <a class="btn primary" href="mailto:contact@fitforadvisory.com" data-i="contact.emailBtn">Escribir por email</a>
+
+            <p style="margin-top:12px;color:var(--muted2);font-size:13px;line-height:1.6" data-i="contact.small">
+              No mostramos nombres personales en el sitio. La coordinación se hace bajo Fit for Advisory.
+            </p>
+          </div>
+
+          <div class="cal-wrap">
+            <div class="cal-top">
+              <div>
+                <h3 data-i="cal.h3">Agendá una conversación</h3>
+                <p data-i="cal.p">Online · 45 min · Días hábiles</p>
+              </div>
+              <a class="btn" href="https://calendly.com/fitforadvisory/meet" target="_blank" rel="noopener" data-i="cal.open">Abrir en Calendly</a>
+            </div>
+
+            <!-- Calendly inline (discreto, no ocupa todo el hero) -->
+            <iframe
+              title="Calendly"
+              height="620"
+              src="https://calendly.com/fitforadvisory/meet?hide_event_type_details=1&hide_gdpr_banner=1"
+              loading="lazy">
+            </iframe>
+
+            <p style="margin:10px 0 0;color:var(--muted2);font-size:12.5px;line-height:1.6" data-i="cal.note">
+              Tip: en Calendly podés configurar el “Host name” y la marca del evento para que no aparezca tu nombre personal.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div style="display:flex; gap:10px; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+          <div>© <span id="year"></span> Fit for Advisory</div>
+          <div data-i="footer.note">Strategy · Finance · Execution — decision-grade models.</div>
+        </div>
+      </div>
+    </footer>
+  </main>
 
   <script>
-    // Reveal
-    const revealEls = Array.from(document.querySelectorAll('.reveal'));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
-
+    // --- Copy / i18n ---
     const I18N = {
       es: {
-        nav_services:"Servicios", nav_method:"Método", nav_insights:"Insights", nav_contact:"Contactar",
+        "nav.tagline":"Boutique advisory para PyMEs",
+        "nav.services":"Servicios",
+        "nav.method":"Método",
+        "nav.insights":"Insights",
+        "nav.contact":"Contactar",
+        "nav.cta":"Agendar",
 
-        hero_kicker:"Boutique advisory para PyMEs · Estrategia & Finanzas",
-        hero_title:"Podemos ayudarte a ordenar el negocio y ejecutar decisiones con impacto.",
-        hero_sub:"Convertimos datos dispersos en una narrativa ejecutiva: <b>qué pasa</b>, <b>por qué pasa</b> y <b>qué hacer ahora</b>. Sin burocracia. Con escenarios, prioridades y un plan de ejecución.",
-        cta_email:"Contactar por email",
-        cta_schedule:"Agendar una reunión",
+        "hero.kicker":"Boutique advisory para PyMEs · Estrategia, Finanzas & Ejecución",
+        "hero.h1":"Decisiones con fundamento.<br/>Claridad para ejecutar.",
+        "hero.lead":"Cuando el negocio crece, los problemas se vuelven difusos: <strong>márgenes</strong>, <strong>caja</strong>, <strong>pricing</strong>, inversión y prioridades. Nosotros lo convertimos en un <strong>modelo</strong> y un <strong>plan</strong> que puedas defender y ejecutar.",
+        "hero.ctaEmail":"Escribir por email",
+        "hero.ctaMeet":"Agendar una conversación",
+        "hero.ctaServices":"Ver servicios",
+        "hero.note":"Trabajamos con enfoque ejecutivo y “decision-grade”: Power Query / Excel, simulaciones, sensibilidad, estadística y regresiones para respaldar escenarios con datos reales. Entregables claros, sin consultoría pesada.",
 
-        m1_tag:"Señal típica",
-        m1_title:"Se vende, pero la caja no aparece",
-        m1_body:"Crecimiento sin diseño de capital de trabajo, pricing o disciplina de seguimiento.",
-        m2_tag:"Señal típica",
-        m2_title:"Márgenes “raros” y decisiones tardías",
-        m2_body:"Falta de visibilidad por producto/canal/cliente y reportes manuales poco confiables.",
-        m3_tag:"Resultado buscado",
-        m3_title:"Claridad + escenarios + plan",
-        m3_body:"Drivers claros, sensibilidad, prioridades y una hoja de ruta ejecutable.",
+        "hero.rightTitle":"Señales típicas en PyMEs",
+        "hero.rightSub":"Cuando todo “funciona”, pero nadie puede explicar por qué.",
+        "hero.box1cap":"Rentabilidad",
+        "hero.box1h":"Márgenes “raros”",
+        "hero.box1p":"No está claro qué producto/canal/cliente financia al resto.",
+        "hero.box2cap":"Caja",
+        "hero.box2h":"Estrés recurrente",
+        "hero.box2p":"La decisión llega tarde: faltan forecast y gatillos.",
+        "hero.box3cap":"Crecimiento",
+        "hero.box3h":"Inversión sin escenarios",
+        "hero.box3p":"Se decide por intuición, sin sensibilidad ni rangos.",
+        "hero.box4cap":"Gestión",
+        "hero.box4h":"Reportes manuales",
+        "hero.box4p":"Planillas lentas, errores y poca trazabilidad.",
+        "hero.outcomeTitle":"Resultado esperado",
+        "hero.outcomeText":"Diagnóstico claro + modelo con escenarios + plan de decisiones priorizado. Listo para ejecutar y monitorear.",
 
-        services_title:"Servicios",
-        services_lead:"Nuestro foco es el análisis económico-financiero y del modelo de negocio, con apoyo de un equipo multidisciplinario para cubrir necesidades punta a punta (según la etapa y el desafío).",
-        s1_title:"Rentabilidad & pricing",
-        s1_body:"Márgenes, mix y palancas. Visibilidad por producto/canal/cliente para decidir sin intuición.",
-        s2_title:"Caja & capital de trabajo",
-        s2_body:"Forecast, políticas de cobro/pago, deuda, alertas tempranas y rutina de control.",
-        s3_title:"Proyectos, valuación & M&A",
-        s3_body:"Business cases, valuación, sensibilidad, due diligence económico y soporte a decisiones de crecimiento.",
+        "contrib.h2":"Nuestro aporte",
+        "contrib.p":"No vendemos “reportes”. Vendemos claridad para decidir: qué pasa, por qué pasa y qué hacer ahora.",
+        "contrib.c1h":"Propósito: bajar el ruido",
+        "contrib.c1p":"En PyMEs, la urgencia tapa las causas. Ordenamos la información, separamos síntomas de drivers y priorizamos decisiones.",
+        "contrib.c2h":"Método: escenarios + gatillos",
+        "contrib.c2p":"Modelos simples de operar, robustos de fondo: sensibilidad, rangos y triggers para transformar estrategia en acción.",
+        "contrib.c3h":"Entregables: diagnóstico + plan",
+        "contrib.c3p":"Rentabilidad, caja, pricing, inversión/valuación y soporte a decisiones (incluyendo M&A cuando aplica). Siempre “tailor-made”.",
 
-        method_title:"Método",
-        method_lead:"No vendemos reportes. Vendemos un proceso corto que te deja con decisiones claras y un plan que se puede ejecutar.",
-        meth_left_title:"Qué hacemos en la práctica",
-        meth_left_list:"<li>Relevamiento ágil: entendemos el negocio, sus fricciones y objetivos.</li><li>Drivers: qué explica márgenes, caja y crecimiento (sin “misterios”).</li><li>Escenarios y sensibilidad: rangos, supuestos y gatillos de decisión.</li><li>Prioridades: quick wins vs cambios estructurales, con responsables y fechas.</li>",
-        callout_title:"Entregable ejecutivo",
-        callout_body:"Documento + modelo simple de operar + plan de acción (foco en decisión, no en presentación).",
-        meth_right_title:"Para quién funciona mejor",
-        meth_right_list:"<li>Dueños/Directores que necesitan claridad sin sumar estructura fija.</li><li>Equipos que quieren alinear números con estrategia y ejecución.</li><li>Empresas con reportes manuales y poca confianza en la data.</li><li>Decisiones grandes en puerta: inversión, pricing, expansión, M&A.</li>",
-        callout2_title:"Diferencial",
-        callout2_body:"Pensamiento de consultora, agilidad boutique. Técnica + criterio + acompañamiento real.",
+        "services.h2":"Servicios",
+        "services.p":"Bloques que combinamos según tu caso. El foco es el análisis económico-financiero y del modelo de negocio, con soporte de un equipo multidisciplinario para un delivery punta a punta.",
+        "services.s1h":"Rentabilidad & pricing",
+        "services.s1p":"Márgenes, mix y palancas: producto/canal/cliente, estructura de costos, pricing y unit economics.",
+        "services.s2h":"Caja & capital de trabajo",
+        "services.s2p":"Forecast con escenarios: cobros/pagos, deuda, políticas, alertas tempranas y disciplina de seguimiento.",
+        "services.s3h":"Proyectos & valuación",
+        "services.s3p":"Evaluación de proyectos, casos de negocio, due diligence económico y soporte para decisiones de crecimiento (incluye M&A).",
 
-        ins_title:"Insights",
-        ins_lead:"Ideas accionables para dueños y equipos directivos. Menos ruido. Más criterio compartido.",
-        i1_title:"Rentabilidad ≠ ventas",
-        i1_body:"Crecer sin entender contribución por producto/cliente suele amplificar el problema de caja. Primero visibilidad (margen, mix, pricing), después escala.",
-        i2_title:"La caja se diseña",
-        i2_body:"Forecast + políticas simples + disciplina de seguimiento generan previsibilidad. La previsibilidad baja el estrés y mejora la negociación con clientes y proveedores.",
-        i3_title:"Escenarios > opiniones",
-        i3_body:"Rangos, sensibilidad y gatillos vuelven objetiva la decisión. Menos “sensación del día”, más criterio compartido y repetible para ejecutar.",
+        "best.h3":"Cuándo esto funciona mejor",
+        "best.p":"Cuando necesitás claridad rápida para decidir: caída de caja, discusión de precios/márgenes, inversión, expansión o “crecer sin romper”. Si el problema “se siente” pero no se puede cuantificar, solemos destrabarlo en semanas.",
+        "best.cta":"Agendar una conversación",
 
-        contact_title:"Contacto",
-        contact_lead:"Si querés, agendá una conversación breve. Si preferís email, escribinos con contexto y 2–3 opciones de horario.",
-        contact_box_title:"Hablemos",
-        contact_box_body:"Respuesta rápida. Confidencialidad y foco en decisiones. Ideal para dueños y equipos directivos.",
-        contact_email_btn:"Escribir a contact@fitforadvisory.com",
-        contact_note:"Tip: contanos tu industria, tamaño aproximado y cuál es la decisión que querés destrabar."
+        "method.h2":"Cómo trabajamos",
+        "method.p":"Proceso simple, ejecutivo. El objetivo no es “analizar por analizar”, sino convertir datos en decisiones accionables.",
+        "method.aTitle":"Diagnóstico",
+        "method.aText":"Relevamiento breve, hipótesis y validación con datos. Identificamos drivers y quick wins vs. cambios estructurales.",
+        "method.aB1":"Mapa económico",
+        "method.aS1":"Drivers, márgenes, estructura y caja.",
+        "method.aB2":"Datos “decision-grade”",
+        "method.aS2":"Definimos qué medir, cómo y con qué periodicidad.",
+        "method.bTitle":"Solución a medida",
+        "method.bText":"Modelo con escenarios y sensibilidad. Recomendaciones accionables y paquete ejecutivo para decidir.",
+        "method.bB1":"Escenarios + sensibilidad",
+        "method.bS1":"Precios, volumen, costos, plazos, FX.",
+        "method.bB2":"Gatillos de decisión",
+        "method.bS2":"Rangos y thresholds para actuar a tiempo.",
+        "method.cTitle":"Seguimiento",
+        "method.cText":"Cadencia liviana. Ajustes, control de desvíos y soporte en decisiones de inversión/crecimiento.",
+        "method.cB1":"Tablero ejecutivo",
+        "method.cS1":"Pocos indicadores, bien definidos y accionables.",
+        "method.cB2":"Decisiones con soporte",
+        "method.cS2":"Crecimiento, inversión, financiamiento, M&A cuando aplica.",
+        "method.dTitle":"Equipo multidisciplinario",
+        "method.dText":"Operamos como boutique: liderazgo analítico económico-financiero + equipo complementario (impuestos, legal, procesos, comercial y sistemas) para proyectos puntuales. La coordinación y el estándar de entrega es único.",
+        "method.dFoot":"Trabajamos remoto y con confidencialidad. Sin exponer el “backstage”: la marca es Fit for Advisory.",
+
+        "ins.h2":"Insights",
+        "ins.p":"Ideas cortas, accionables y orientadas a decisión. Útiles para founders y equipos directivos (sin teoría de más).",
+        "ins.i1h":"Rentabilidad ≠ ventas",
+        "ins.i1p":"Crecer sin estructura de márgenes y costos suele aumentar el estrés de caja. El primer paso es mapear contribución por producto/canal/cliente y detectar “subsidios” invisibles.",
+        "ins.i2h":"La caja se diseña",
+        "ins.i2p":"Forecast + políticas de cobro/pago + disciplina de seguimiento. No es “suerte”. Con escenarios y triggers, el equipo actúa antes de que el problema sea urgente.",
+        "ins.i3h":"Escenarios > opiniones",
+        "ins.i3p":"Cuando el negocio es sensible, el escenario manda: rangos, sensibilidad y supuestos explícitos. La conversación deja de ser “creo que” y pasa a ser “si pasa X, hacemos Y”.",
+        "ins.i4h":"Menos tablero, más decisión",
+        "ins.i4p":"Un tablero ejecutivo sirve si dispara acciones. Pocos indicadores, bien definidos, con periodicidad y responsables. La visualización es el final: primero se define el “sistema de decisión”.",
+
+        "contact.h2":"Hablemos",
+        "contact.p":"Si querés, arrancamos por una conversación corta: contexto, problemas, objetivos y próximos pasos. Si tiene sentido, preparamos una propuesta a medida.",
+        "contact.leftH":"Contacto",
+        "contact.leftP":"Escribinos por email (en ES o EN). Respuesta en 24–48h hábiles.",
+        "contact.emailLabel":"Email",
+        "contact.emailBtn":"Escribir por email",
+        "contact.small":"No mostramos nombres personales en el sitio. La coordinación se hace bajo Fit for Advisory.",
+
+        "cal.h3":"Agendá una conversación",
+        "cal.p":"Online · 45 min · Días hábiles",
+        "cal.open":"Abrir en Calendly",
+        "cal.note":"Tip: en Calendly podés configurar el “Host name” y la marca del evento para que no aparezca tu nombre personal.",
+
+        "footer.note":"Estrategia · Finanzas · Ejecución — modelos para decidir."
       },
 
       en: {
-        nav_services:"Services", nav_method:"Method", nav_insights:"Insights", nav_contact:"Contact",
+        "nav.tagline":"Boutique advisory for SMEs",
+        "nav.services":"Services",
+        "nav.method":"Method",
+        "nav.insights":"Insights",
+        "nav.contact":"Contact",
+        "nav.cta":"Schedule",
 
-        hero_kicker:"Boutique advisory for SMEs · Strategy & Finance",
-        hero_title:"We help you structure the business and execute decisions with impact.",
-        hero_sub:"We turn scattered data into an executive narrative: <b>what’s happening</b>, <b>why it’s happening</b>, and <b>what to do next</b>. No bureaucracy—just scenarios, priorities and an execution plan.",
-        cta_email:"Email us",
-        cta_schedule:"Schedule a meeting",
+        "hero.kicker":"Boutique advisory for SMEs · Strategy, Finance & Execution",
+        "hero.h1":"Decision-grade clarity.<br/>Built to execute.",
+        "hero.lead":"As companies grow, problems become fuzzy: <strong>margins</strong>, <strong>cash</strong>, <strong>pricing</strong>, investments and priorities. We turn that into a <strong>model</strong> and an <strong>action plan</strong> you can defend and execute.",
+        "hero.ctaEmail":"Email us",
+        "hero.ctaMeet":"Book a conversation",
+        "hero.ctaServices":"View services",
+        "hero.note":"Executive, decision-grade work: Power Query / Excel, simulations, sensitivity analysis, statistics and regressions to ground scenarios in real data. Clear deliverables — no heavy consulting.",
 
-        m1_tag:"Typical signal",
-        m1_title:"Sales grow, but cash doesn’t show up",
-        m1_body:"Growth without working-capital design, pricing discipline or follow-up cadence.",
-        m2_tag:"Typical signal",
-        m2_title:"Unclear margins and late decisions",
-        m2_body:"No visibility by product/channel/customer, plus manual reporting with low confidence.",
-        m3_tag:"Outcome",
-        m3_title:"Clarity + scenarios + plan",
-        m3_body:"Clear drivers, sensitivity, priorities, and an executable roadmap.",
+        "hero.rightTitle":"Common SME signals",
+        "hero.rightSub":"Things “work”, but nobody can explain why.",
+        "hero.box1cap":"Profitability",
+        "hero.box1h":"‘Weird’ margins",
+        "hero.box1p":"Unclear which product/channel/client funds the rest.",
+        "hero.box2cap":"Cash",
+        "hero.box2h":"Recurring stress",
+        "hero.box2p":"Decisions arrive late: missing forecast and triggers.",
+        "hero.box3cap":"Growth",
+        "hero.box3h":"Investing without scenarios",
+        "hero.box3p":"Decisions by intuition, no sensitivity or ranges.",
+        "hero.box4cap":"Management",
+        "hero.box4h":"Manual reporting",
+        "hero.box4p":"Slow spreadsheets, errors, low traceability.",
+        "hero.outcomeTitle":"Expected outcome",
+        "hero.outcomeText":"Clear diagnosis + scenario model + prioritized decision plan. Ready to execute and monitor.",
 
-        services_title:"Services",
-        services_lead:"Our core is economic/financial and business-model analysis, supported by a multidisciplinary team to cover end-to-end needs depending on the challenge and stage.",
-        s1_title:"Profitability & pricing",
-        s1_body:"Margins, mix and levers. Visibility by product/channel/customer to decide without guesswork.",
-        s2_title:"Cash & working capital",
-        s2_body:"Forecasting, collection/payment policies, debt, early warnings and a control cadence.",
-        s3_title:"Projects, valuation & M&A",
-        s3_body:"Business cases, valuation, sensitivity, economic due diligence and support for growth decisions.",
+        "contrib.h2":"Our contribution",
+        "contrib.p":"We don’t sell “reports”. We sell decision clarity: what’s happening, why, and what to do next.",
+        "contrib.c1h":"Purpose: reduce noise",
+        "contrib.c1p":"In SMEs, urgency hides root causes. We organize information, separate symptoms from drivers, and prioritize decisions.",
+        "contrib.c2h":"Method: scenarios + triggers",
+        "contrib.c2p":"Simple to operate, robust underneath: sensitivity, ranges and triggers that turn strategy into action.",
+        "contrib.c3h":"Deliverables: diagnosis + plan",
+        "contrib.c3p":"Profitability, cash, pricing, investment/valuation and decision support (including M&A when relevant). Always tailored.",
 
-        method_title:"Method",
-        method_lead:"We don’t sell reports. We run a short process that ends with clear decisions and an executable plan.",
-        meth_left_title:"What we do in practice",
-        meth_left_list:"<li>Fast discovery: understand the business, frictions and goals.</li><li>Drivers: what explains margins, cash and growth.</li><li>Scenarios & sensitivity: ranges, assumptions and decision triggers.</li><li>Priorities: quick wins vs structural change, owners and timelines.</li>",
-        callout_title:"Executive deliverable",
-        callout_body:"A concise document + a simple operating model + an action plan (decision-first, not slides-first).",
-        meth_right_title:"Best fit",
-        meth_right_list:"<li>Founders/Directors who need clarity without building fixed structure.</li><li>Teams aligning numbers with strategy and execution.</li><li>Companies with manual reporting and low data confidence.</li><li>Big decisions ahead: investment, pricing, expansion, M&A.</li>",
-        callout2_title:"Edge",
-        callout2_body:"Consulting-grade thinking with boutique agility. Technique + judgement + real follow-through.",
+        "services.h2":"Services",
+        "services.p":"Building blocks we combine per case. Core focus is business & financial model analysis, supported by a multidisciplinary team for end-to-end delivery.",
+        "services.s1h":"Profitability & pricing",
+        "services.s1p":"Margins, mix and levers: product/channel/customer, cost structure, pricing and unit economics.",
+        "services.s2h":"Cash & working capital",
+        "services.s2p":"Scenario-based forecast: collections/payments, debt, policies, early alerts and follow-up cadence.",
+        "services.s3h":"Projects & valuation",
+        "services.s3p":"Project evaluation, business cases, economic due diligence and growth decision support (incl. M&A).",
 
-        ins_title:"Insights",
-        ins_lead:"Actionable ideas for founders and executive teams. Less noise. More shared judgement.",
-        i1_title:"Profitability ≠ revenue",
-        i1_body:"Scaling without contribution by product/customer often amplifies cash issues. First visibility (margin, mix, pricing), then scale.",
-        i2_title:"Cash is designed",
-        i2_body:"Forecasting + simple policies + follow-up discipline create predictability. Predictability reduces stress and improves negotiation.",
-        i3_title:"Scenarios > opinions",
-        i3_body:"Ranges, sensitivity and triggers make decisions objective. Less daily intuition, more repeatable criteria to execute.",
+        "best.h3":"When this works best",
+        "best.p":"When you need fast clarity to decide: cash drops, pricing/margin debates, investments, expansion or “growing without breaking”. If the problem is felt but not quantified, we typically unlock it within weeks.",
+        "best.cta":"Book a conversation",
 
-        contact_title:"Contact",
-        contact_lead:"Schedule a short conversation. Prefer email? Send context plus 2–3 time options.",
-        contact_box_title:"Let’s talk",
-        contact_box_body:"Fast response. Confidentiality and decision focus. Ideal for founders and executive teams.",
-        contact_email_btn:"Email contact@fitforadvisory.com",
-        contact_note:"Tip: share your industry, approximate size, and the decision you want to unblock."
+        "method.h2":"How we work",
+        "method.p":"Simple, executive process. Not analysis for analysis’ sake — we turn data into decisions.",
+        "method.aTitle":"Diagnosis",
+        "method.aText":"Short discovery, hypotheses and data validation. Identify drivers and quick wins vs. structural changes.",
+        "method.aB1":"Economic map",
+        "method.aS1":"Drivers, margins, structure and cash.",
+        "method.aB2":"Decision-grade data",
+        "method.aS2":"Define what to measure, how and how often.",
+        "method.bTitle":"Tailored solution",
+        "method.bText":"Scenario model + sensitivity. Actionable recommendations and an executive pack to decide.",
+        "method.bB1":"Scenarios + sensitivity",
+        "method.bS1":"Price, volume, costs, terms, FX.",
+        "method.bB2":"Decision triggers",
+        "method.bS2":"Ranges and thresholds to act early.",
+        "method.cTitle":"Follow-through",
+        "method.cText":"Light cadence. Adjustments, variance control and support for investment/growth decisions.",
+        "method.cB1":"Executive dashboard",
+        "method.cS1":"Few metrics, well defined and actionable.",
+        "method.cB2":"Decision support",
+        "method.cS2":"Growth, investment, financing, M&A when relevant.",
+        "method.dTitle":"Multidisciplinary team",
+        "method.dText":"We operate as a boutique: financial & business model leadership + complementary specialists (tax, legal, operations, commercial, systems) for specific project needs. One standard, one coordination layer.",
+        "method.dFoot":"Remote and confidential. The brand is Fit for Advisory — not personal names.",
+
+        "ins.h2":"Insights",
+        "ins.p":"Short, actionable ideas for founders and leadership teams — minimal theory.",
+        "ins.i1h":"Profitability ≠ revenue",
+        "ins.i1p":"Growing without margin/cost structure increases cash stress. First step: contribution by product/channel/customer and hidden cross-subsidies.",
+        "ins.i2h":"Cash is designed",
+        "ins.i2p":"Forecast + collection/payment policies + follow-up discipline. With scenarios and triggers, you act before urgency.",
+        "ins.i3h":"Scenarios > opinions",
+        "ins.i3p":"When the business is sensitive, scenarios lead: ranges, sensitivity, explicit assumptions. From “I think” to “If X, we do Y”.",
+        "ins.i4h":"Less dashboard, more decisions",
+        "ins.i4p":"Dashboards matter only if they trigger action. Few metrics, clear owners and cadence. Visualization is last — decision system is first.",
+
+        "contact.h2":"Let’s talk",
+        "contact.p":"Start with a short conversation: context, pain points, objectives and next steps. If it fits, we propose a tailored scope.",
+        "contact.leftH":"Contact",
+        "contact.leftP":"Email us (ES or EN). Reply within 24–48 business hours.",
+        "contact.emailLabel":"Email",
+        "contact.emailBtn":"Email us",
+        "contact.small":"We don’t display personal names on the site. Coordination runs under Fit for Advisory.",
+
+        "cal.h3":"Book a conversation",
+        "cal.p":"Online · 45 min · Business days",
+        "cal.open":"Open in Calendly",
+        "cal.note":"Tip: in Calendly you can set the event brand/host name so your personal name doesn’t show.",
+
+        "footer.note":"Strategy · Finance · Execution — decision-grade models."
       }
     };
 
     function applyLang(lang){
       document.documentElement.lang = lang;
-      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-
-      document.querySelectorAll('[data-t]').forEach(el=>{
-        const key = el.getAttribute('data-t');
-        if(I18N[lang] && I18N[lang][key] !== undefined){
-          el.innerHTML = I18N[lang][key];
+      const dict = I18N[lang];
+      document.querySelectorAll("[data-i]").forEach(el=>{
+        const k = el.getAttribute("data-i");
+        if(dict[k] !== undefined){
+          el.innerHTML = dict[k];
         }
       });
 
-      // HTML lists
-      const l1 = document.querySelector('[data-t="meth_left_list"]');
-      const l2 = document.querySelector('[data-t="meth_right_list"]');
-      if(l1) l1.innerHTML = I18N[lang].meth_left_list;
-      if(l2) l2.innerHTML = I18N[lang].meth_right_list;
+      // Update buttons
+      document.getElementById("btn-es").classList.toggle("active", lang==="es");
+      document.getElementById("btn-en").classList.toggle("active", lang==="en");
 
-      localStorage.setItem('ffa_lang', lang);
+      // Update meta description roughly
+      const meta = document.querySelector('meta[name="description"]');
+      if(meta){
+        meta.setAttribute("content", lang==="es"
+          ? "Fit for Advisory — Boutique advisory para PyMEs. Estrategia, finanzas y ejecución con modelos para decidir."
+          : "Fit for Advisory — Boutique advisory for SMEs. Strategy, finance & execution with decision-grade models."
+        );
+      }
     }
-    function setLang(lang){ applyLang(lang); }
 
-    (function(){
-      const stored = localStorage.getItem('ffa_lang');
-      applyLang(stored === 'en' ? 'en' : 'es');
-    })();
+    // Language buttons
+    document.getElementById("btn-es").addEventListener("click", ()=>applyLang("es"));
+    document.getElementById("btn-en").addEventListener("click", ()=>applyLang("en"));
+
+    // Default language: ES
+    applyLang("es");
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
