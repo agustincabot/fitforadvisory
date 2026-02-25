@@ -6,607 +6,232 @@
   <meta name="description" content="Fit for Advisory — Boutique advisory para PyMEs. Estrategia, finanzas y ejecución con modelos para decidir." />
   <title>Fit for Advisory</title>
 
-  <!-- Canonical + Social (ajustar dominio/og.jpg cuando lo tengas) -->
-  <link rel="canonical" href="https://fitforadvisory.com/" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Fit for Advisory" />
-  <meta property="og:title" content="Fit for Advisory" />
-  <meta property="og:description" content="Boutique advisory for SMEs. Strategy, finance & execution with decision-grade models." />
-  <meta property="og:url" content="https://fitforadvisory.com/" />
-  <meta property="og:image" content="https://fitforadvisory.com/og.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Fit for Advisory" />
-  <meta name="twitter:description" content="Boutique advisory for SMEs. Strategy, finance & execution with decision-grade models." />
-  <meta name="twitter:image" content="https://fitforadvisory.com/og.jpg" />
-
-  <!-- Favicons -->
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="theme-color" content="#f6f8ff" />
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* base */
-      --bg: #f7f9fc;              /* corporate soft */
-      --bg2:#f3f6fb;
-      --panel: rgba(255,255,255,.78);
-      --panel-strong: rgba(255,255,255,.94);
-      --text: #0e1325;
-      --muted: #5a647a;
-      --muted2:#7b859b;
-      --line: rgba(14,19,37,.10);
-      --shadow: 0 20px 60px rgba(15, 23, 42, .08);
-      --shadow2: 0 14px 36px rgba(15, 23, 42, .10);
-
-      /* brand accents */
-      --accent: #16a34a;          /* GREEN (requested) */
-      --accent2:#2563eb;          /* blue */
-      --good:#0f766e;             /* teal */
-      --warn:#b45309;             /* amber */
-
-      --radius: 22px;
-      --max: 1160px;
+      --bg:#f7f9fc; --bg2:#f3f6fb;
+      --panel:rgba(255,255,255,.78); --panel2:rgba(255,255,255,.94);
+      --text:#0e1325; --muted:#5a647a; --muted2:#7b859b;
+      --line:rgba(14,19,37,.10);
+      --shadow:0 20px 60px rgba(15,23,42,.08); --shadow2:0 14px 36px rgba(15,23,42,.10);
+      --accent:#16a34a; --accent2:#2563eb; --good:#0f766e;
+      --r:22px; --max:1160px;
     }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box} html,body{height:100%}
     body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-
-      /* More corporate background:
-         - subtle vertical gradient (no “cuts” on scroll)
-         - faint grid texture (repeats seamlessly)
-      */
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text);
       background:
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 55%, var(--bg) 100%),
+        linear-gradient(180deg,var(--bg) 0%,var(--bg2) 55%,var(--bg) 100%),
         radial-gradient(1200px 600px at 15% 10%, rgba(37,99,235,.06), transparent 60%),
         radial-gradient(1200px 600px at 85% 20%, rgba(22,163,74,.06), transparent 62%);
-      background-attachment: fixed;
-      overflow-x:hidden;
+      background-attachment:fixed; overflow-x:hidden;
     }
-    /* subtle grid overlay */
     body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
       background-image:
         linear-gradient(rgba(14,19,37,.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(14,19,37,.04) 1px, transparent 1px);
-      background-size: 64px 64px;
-      opacity:.22;
-      mix-blend-mode:multiply;
-      z-index:-1;
+      background-size:64px 64px; opacity:.22; mix-blend-mode:multiply;
     }
-
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 22px;}
-    .glass{
-      background:var(--panel);
-      border:1px solid var(--line);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-radius: var(--radius);
-    }
-
-    /* Skip link */
-    .skip{
-      position:absolute; left:-999px; top:10px;
-      background:#fff; border:1px solid rgba(14,19,37,.18);
-      padding:10px 12px; border-radius:12px; z-index:999;
-      box-shadow: 0 10px 22px rgba(15,23,42,.10);
-    }
-    .skip:focus{ left:10px; }
-
-    /* Focus visible */
-    :focus-visible{
-      outline: 3px solid rgba(37,99,235,.45);
-      outline-offset: 2px;
-      border-radius: 14px;
-    }
+    .glass{background:var(--panel); border:1px solid var(--line); box-shadow:var(--shadow); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:var(--r);}
 
     /* Header */
-    header{
-      position:sticky; top:0; z-index:50;
-      background: rgba(247,249,252,.78);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom:1px solid rgba(14,19,37,.06);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
-    }
-    .brand{display:flex; align-items:center; gap:12px; min-width: 220px;}
-    .brand img{
-      height:34px; width:auto; display:block;
-      filter: drop-shadow(0 8px 16px rgba(15,23,42,.10));
-    }
+    header{position:sticky; top:0; z-index:50; background:rgba(247,249,252,.78); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(14,19,37,.06);}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:14px;}
+    .brand{display:flex; align-items:center; gap:12px; min-width:220px;}
+    .brand img{height:34px; width:auto; display:block; filter:drop-shadow(0 8px 16px rgba(15,23,42,.10));}
 
-    nav ul{
-      list-style:none; margin:0; padding:0;
-      display:flex; align-items:center; gap:18px;
-    }
-    nav a{
-      text-decoration:none;
-      color:var(--muted);
-      font-weight:600;
-      font-size:14px;
-      padding:8px 10px;
-      border-radius:12px;
-      transition: background .2s ease, color .2s ease;
-    }
-    nav a:hover{ background: rgba(37,99,235,.08); color: var(--text); }
+    nav ul{list-style:none; margin:0; padding:0; display:flex; align-items:center; gap:18px;}
+    nav a{text-decoration:none; color:var(--muted); font-weight:600; font-size:14px; padding:8px 10px; border-radius:12px; transition:.2s;}
+    nav a:hover{background:rgba(37,99,235,.08); color:var(--text);}
 
     .actions{display:flex; align-items:center; gap:10px;}
     .btn{
-      border:1px solid var(--line);
-      background: var(--panel-strong);
-      color: var(--text);
-      padding:10px 14px;
-      border-radius: 14px;
-      font-weight:700;
-      font-size:14px;
-      cursor:pointer;
-      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
-      box-shadow: 0 8px 20px rgba(15,23,42,.06);
-      text-decoration:none;
-      display:inline-flex; align-items:center; gap:10px;
-      white-space:nowrap;
+      border:1px solid var(--line); background:var(--panel2); color:var(--text);
+      padding:10px 14px; border-radius:14px; font-weight:800; font-size:14px; cursor:pointer;
+      transition:transform .15s ease, box-shadow .2s ease; box-shadow:0 8px 20px rgba(15,23,42,.06);
+      text-decoration:none; display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
     }
-    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
-    .btn.primary{
-      border-color: rgba(22,163,74,.26);
-      background: linear-gradient(180deg, rgba(22,163,74,.16), rgba(22,163,74,.08));
-    }
-    .btn.soft{
-      border-color: rgba(37,99,235,.18);
-      background: linear-gradient(180deg, rgba(37,99,235,.12), rgba(37,99,235,.06));
-      color: var(--text);
-    }
+    .btn:hover{transform:translateY(-1px); box-shadow:var(--shadow2);}
+    .btn.primary{border-color:rgba(22,163,74,.26); background:linear-gradient(180deg, rgba(22,163,74,.16), rgba(22,163,74,.08));}
+    .btn.soft{border-color:rgba(37,99,235,.18); background:linear-gradient(180deg, rgba(37,99,235,.12), rgba(37,99,235,.06));}
 
-    .lang{
-      display:flex; align-items:center;
-      border:1px solid var(--line);
-      background: var(--panel-strong);
-      border-radius: 999px;
-      padding:4px;
-      gap:4px;
-      box-shadow: 0 8px 20px rgba(15,23,42,.06);
-    }
-    .lang button{
-      border:0; background:transparent;
-      padding:8px 10px;
-      border-radius: 999px;
-      font-weight:800;
-      font-size:13px;
-      color: var(--muted);
-      cursor:pointer;
-    }
-    .lang button.active{ background: rgba(14,19,37,.06); color: var(--text); }
+    .lang{display:flex; align-items:center; border:1px solid var(--line); background:var(--panel2); border-radius:999px; padding:4px; gap:4px; box-shadow:0 8px 20px rgba(15,23,42,.06);}
+    .lang button{border:0; background:transparent; padding:8px 10px; border-radius:999px; font-weight:900; font-size:13px; color:var(--muted); cursor:pointer;}
+    .lang button.active{background:rgba(14,19,37,.06); color:var(--text);}
 
-    /* Mobile menu button */
-    .menu-btn{
-      display:none;
-      border:1px solid var(--line);
-      background: var(--panel-strong);
-      border-radius: 14px;
-      padding:10px 12px;
-      cursor:pointer;
-      box-shadow: 0 8px 20px rgba(15,23,42,.06);
-    }
+    .menu-btn{display:none; border:1px solid var(--line); background:var(--panel2); border-radius:14px; padding:10px 12px; cursor:pointer; box-shadow:0 8px 20px rgba(15,23,42,.06);}
     .menu-btn svg{width:18px; height:18px;}
-
-    /* Mobile drawer */
-    .drawer{
-      display:none;
-      position:fixed;
-      inset: 62px 14px auto 14px;
-      z-index:60;
-      background: rgba(255,255,255,.90);
-      border:1px solid var(--line);
-      border-radius: 18px;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-    }
-    .drawer .inner{ padding:12px; display:grid; gap:8px; }
-    .drawer a{
-      text-decoration:none;
-      padding:12px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(14,19,37,.08);
-      background: rgba(255,255,255,.85);
-      color: var(--text);
-      font-weight:800;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .drawer a span{color:var(--muted); font-weight:700; font-size:13px;}
+    .drawer{display:none; position:fixed; inset:62px 14px auto 14px; z-index:60; background:rgba(255,255,255,.90); border:1px solid var(--line); border-radius:18px; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); box-shadow:var(--shadow2); overflow:hidden;}
     .drawer.open{display:block;}
+    .drawer .inner{padding:12px; display:grid; gap:8px;}
+    .drawer a{text-decoration:none; padding:12px; border-radius:14px; border:1px solid rgba(14,19,37,.08); background:rgba(255,255,255,.85); font-weight:900; display:flex; align-items:center; justify-content:space-between;}
+    .drawer a span{color:var(--muted); font-weight:800; font-size:13px;}
 
     /* Hero */
-    .hero{ padding:54px 0 26px; }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:24px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      nav ul{display:none;}
-      .menu-btn{display:inline-flex;}
-    }
+    .hero{padding:54px 0 26px;}
+    .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:stretch;}
+    @media (max-width:980px){ .hero-grid{grid-template-columns:1fr;} nav ul{display:none;} .menu-btn{display:inline-flex;} }
 
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:12px;
-      color: rgba(14,19,37,.72);
-      padding:10px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(14,19,37,.10);
-      background: rgba(255,255,255,.75);
-    }
-    .kicker .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 8px 18px rgba(22,163,74,.18);
-    }
+    .kicker{display:inline-flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; font-size:12px; color:rgba(14,19,37,.72); padding:10px 12px; border-radius:999px; border:1px solid rgba(14,19,37,.10); background:rgba(255,255,255,.75);}
+    .kicker .dot{width:8px; height:8px; border-radius:999px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:0 8px 18px rgba(22,163,74,.18);}
 
-    h1{
-      font-family: Fraunces, serif;
-      font-weight:700;
-      letter-spacing:-.02em;
-      line-height:1.05;
-      font-size:56px;
-      margin:16px 0 14px;
-    }
-    @media (max-width: 520px){ h1{font-size:42px;} }
+    h1{font-family:Fraunces,serif; font-weight:700; letter-spacing:-.02em; line-height:1.05; font-size:56px; margin:16px 0 14px;}
+    @media (max-width:520px){ h1{font-size:42px;} }
+    .lead{font-size:17px; line-height:1.65; color:var(--muted); max-width:62ch; margin:0 0 12px;}
+    .lead strong{color:var(--text);}
 
-    .lead{
-      font-size:17px;
-      line-height:1.65;
-      color: var(--muted);
-      max-width: 62ch;
-      margin: 0 0 12px;
-    }
-    .lead strong{color:var(--text)}
-
+    /* Green value box (NO red) */
     .value-line{
-      margin-top:10px;
-      padding:14px 14px;
-      border-radius: 16px;
+      margin-top:10px; padding:14px; border-radius:16px;
       border:1px solid rgba(22,163,74,.18);
-      background: linear-gradient(180deg, rgba(22,163,74,.10), rgba(255,255,255,.72));
-      box-shadow: 0 12px 28px rgba(22,163,74,.08);
-      color: rgba(14,19,37,.88);
-      line-height:1.6;
-      font-size:14px;
-      max-width: 78ch;
+      background:linear-gradient(180deg, rgba(22,163,74,.10), rgba(255,255,255,.78));
+      box-shadow:0 12px 28px rgba(22,163,74,.08);
+      line-height:1.6; font-size:14px; max-width:92ch;
     }
-    .value-line b{color:var(--text)}
-    .value-line .mut{color:var(--muted)}
+    .value-line b{color:var(--text)} .value-line .mut{color:var(--muted)}
 
-    .hero-ctas{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
-
-    .note{
-      margin-top:14px;
-      color: var(--muted2);
-      font-size:13px;
-      line-height:1.6;
-      max-width: 86ch;
-    }
+    .hero-ctas{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;}
+    .note{margin-top:14px; color:var(--muted2); font-size:13px; line-height:1.6; max-width:92ch;}
 
     /* Right card */
-    .pain{ padding:18px 18px 16px; border-radius: var(--radius); }
-    .pain-title{ font-weight:900; font-size:16px; }
-    .pain-sub{ color:var(--muted2); font-size:13px; margin-top:4px; }
-
-    .grid4{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-      margin-top:14px;
-    }
-    .mini{
-      background: rgba(255,255,255,.78);
-      border:1px solid var(--line);
-      border-radius: 16px;
-      padding:14px 14px 12px;
-      min-height: 110px;
-      box-shadow: 0 10px 24px rgba(15,23,42,.06);
-    }
-    .mini .cap{
-      font-size:11px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color: var(--muted2);
-      font-weight:800;
-      margin-bottom:8px;
-    }
-    .mini h4{ margin:0 0 8px; font-size:16px; letter-spacing:-.01em; }
-    .mini p{ margin:0; color: var(--muted); font-size:13px; line-height:1.55; }
-
-    .outcome{
-      margin-top:12px;
-      padding:14px;
-      border-radius: 16px;
-      border:1px solid rgba(15,118,110,.18);
-      background: linear-gradient(180deg, rgba(15,118,110,.10), rgba(15,118,110,.06));
-    }
+    .pain{padding:18px 18px 16px; border-radius:var(--r);}
+    .pain-title{font-weight:900; font-size:16px;}
+    .pain-sub{color:var(--muted2); font-size:13px; margin-top:4px;}
+    .grid4{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px;}
+    .mini{background:rgba(255,255,255,.78); border:1px solid var(--line); border-radius:16px; padding:14px 14px 12px; min-height:110px; box-shadow:0 10px 24px rgba(15,23,42,.06);}
+    .mini .cap{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted2); font-weight:900; margin-bottom:8px;}
+    .mini h4{margin:0 0 8px; font-size:16px; letter-spacing:-.01em;}
+    .mini p{margin:0; color:var(--muted); font-size:13px; line-height:1.55;}
+    .outcome{margin-top:12px; padding:14px; border-radius:16px; border:1px solid rgba(15,118,110,.18); background:linear-gradient(180deg, rgba(15,118,110,.10), rgba(15,118,110,.06));}
     .outcome strong{display:block; margin-bottom:6px;}
     .outcome span{color:var(--muted); font-size:13px; line-height:1.6;}
 
     /* Sections */
-    section{ padding:38px 0; }
-    .sec-head{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:18px;
-      margin-bottom:18px;
-    }
-    .sec-head h2{ margin:0; font-size:28px; letter-spacing:-.02em; }
-    .sec-head p{ margin:0; color: var(--muted); line-height:1.6; max-width: 95ch; }
+    section{padding:38px 0;}
+    .sec-head{display:flex; align-items:flex-end; justify-content:space-between; gap:18px; margin-bottom:18px;}
+    .sec-head h2{margin:0; font-size:28px; letter-spacing:-.02em;}
+    .sec-head p{margin:0; color:var(--muted); line-height:1.6; max-width:95ch;}
 
-    .cards3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    @media (max-width: 980px){ .cards3{grid-template-columns:1fr;} }
-
-    .card{
-      padding:18px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.78);
-      border:1px solid var(--line);
-      box-shadow: 0 14px 34px rgba(15,23,42,.06);
-    }
-    .card h3{ margin:10px 0 10px; font-size:18px; letter-spacing:-.01em; }
-    .card p{ margin:0; color: var(--muted); line-height:1.65; font-size:14px; }
-
-    .ico{
-      width:42px; height:42px;
-      border-radius: 14px;
-      display:grid; place-items:center;
-      border:1px solid rgba(14,19,37,.10);
-      background: linear-gradient(180deg, rgba(37,99,235,.10), rgba(255,255,255,.70));
-    }
-    .ico svg{ width:22px; height:22px; opacity:.95; }
-
-    /* “Para quién” */
-    .who{
-      padding:20px;
-      border-radius: var(--radius);
-      border:1px solid rgba(37,99,235,.16);
-      background: rgba(255,255,255,.78);
-      box-shadow: 0 14px 34px rgba(15,23,42,.06);
-    }
-    .who h3{ margin:0; font-size:18px; }
-    .who p{ margin:8px 0 0; color: var(--muted); line-height:1.6; max-width: 95ch; }
-    .who ul{ margin:12px 0 0; padding-left:18px; color:var(--muted); line-height:1.8; }
-    .who li b{ color: var(--text); }
+    .cards3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+    @media (max-width:980px){ .cards3{grid-template-columns:1fr;} }
+    .card{padding:18px; border-radius:var(--r); background:rgba(255,255,255,.78); border:1px solid var(--line); box-shadow:0 14px 34px rgba(15,23,42,.06);}
+    .card h3{margin:10px 0 10px; font-size:18px; letter-spacing:-.01em;}
+    .card p{margin:0; color:var(--muted); line-height:1.65; font-size:14px;}
+    .ico{width:42px; height:42px; border-radius:14px; display:grid; place-items:center; border:1px solid rgba(14,19,37,.10); background:linear-gradient(180deg, rgba(37,99,235,.10), rgba(255,255,255,.70));}
+    .ico svg{width:22px; height:22px; opacity:.95;}
 
     /* Tools strip */
-    .tools{
-      padding:18px;
-      border-radius: var(--radius);
-      border:1px solid rgba(37,99,235,.16);
-      background: rgba(255,255,255,.78);
-      box-shadow: 0 14px 34px rgba(15,23,42,.06);
-      margin-top:14px;
-    }
-    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
-    .chip{
-      padding:10px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(14,19,37,.10);
-      background: rgba(255,255,255,.86);
-      font-weight:800;
-      font-size:13px;
-      color: rgba(14,19,37,.84);
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      box-shadow: 0 10px 22px rgba(15,23,42,.05);
-    }
-    .chip .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent2), var(--good));
-      box-shadow: 0 10px 18px rgba(37,99,235,.18);
-    }
-    .tools small{
-      display:block;
-      margin-top:10px;
-      color: var(--muted2);
-      line-height:1.6;
-      font-size:13px;
-      max-width: 100ch;
-    }
+    .tools{padding:18px; border-radius:var(--r); border:1px solid rgba(37,99,235,.16); background:rgba(255,255,255,.78); box-shadow:0 14px 34px rgba(15,23,42,.06);}
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;}
+    .chip{padding:10px 12px; border-radius:999px; border:1px solid rgba(14,19,37,.10); background:rgba(255,255,255,.86); font-weight:900; font-size:13px; color:rgba(14,19,37,.84); display:inline-flex; align-items:center; gap:8px; box-shadow:0 10px 22px rgba(15,23,42,.05);}
+    .chip .dot{width:8px; height:8px; border-radius:999px; background:linear-gradient(135deg,var(--accent2),var(--good)); box-shadow:0 10px 18px rgba(37,99,235,.18);}
+    .tools small{display:block; margin-top:10px; color:var(--muted2); line-height:1.6; font-size:13px; max-width:100ch;}
 
-    /* Method steps */
-    .steps{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){ .steps{grid-template-columns:1fr;} }
-    .step{
-      padding:18px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.78);
-      border:1px solid var(--line);
-      box-shadow: 0 14px 34px rgba(15,23,42,.06);
-    }
-    .step .tag{
-      display:inline-flex; align-items:center; gap:10px;
-      font-weight:900;
-      font-size:13px;
-      color: rgba(14,19,37,.86);
-      border:1px solid rgba(14,19,37,.10);
-      background: rgba(255,255,255,.80);
-      padding:10px 12px;
-      border-radius: 999px;
-      margin-bottom:10px;
-    }
-    .tag .n{
-      width:26px; height:26px;
-      border-radius: 999px;
-      display:grid; place-items:center;
-      background: rgba(37,99,235,.10);
-      border:1px solid rgba(37,99,235,.18);
-      font-weight:900;
-    }
-    .bullets{ margin-top:12px; display:grid; gap:10px; }
-    .bullet{
-      padding:12px 12px;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.82);
-      display:flex; gap:12px; align-items:flex-start;
-    }
-    .bullet .tick{
-      width:26px; height:26px;
-      border-radius: 10px;
-      display:grid; place-items:center;
-      background: rgba(15,118,110,.10);
-      border:1px solid rgba(15,118,110,.18);
-      flex: 0 0 auto;
-      margin-top:2px;
-    }
-    .bullet .tick svg{width:16px; height:16px;}
+    /* Steps */
+    .steps{display:grid; grid-template-columns:1.05fr .95fr; gap:14px; align-items:stretch;}
+    @media (max-width:980px){ .steps{grid-template-columns:1fr;} }
+    .step{padding:18px; border-radius:var(--r); background:rgba(255,255,255,.78); border:1px solid var(--line); box-shadow:0 14px 34px rgba(15,23,42,.06);}
+    .tag{display:inline-flex; align-items:center; gap:10px; font-weight:900; font-size:13px; color:rgba(14,19,37,.86); border:1px solid rgba(14,19,37,.10); background:rgba(255,255,255,.80); padding:10px 12px; border-radius:999px; margin-bottom:10px;}
+    .tag .n{width:26px; height:26px; border-radius:999px; display:grid; place-items:center; background:rgba(37,99,235,.10); border:1px solid rgba(37,99,235,.18); font-weight:900;}
+    .bullets{margin-top:12px; display:grid; gap:10px;}
+    .bullet{padding:12px; border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,.82); display:flex; gap:12px; align-items:flex-start;}
+    .tick{width:26px; height:26px; border-radius:10px; display:grid; place-items:center; background:rgba(15,118,110,.10); border:1px solid rgba(15,118,110,.18); flex:0 0 auto; margin-top:2px;}
+    .tick svg{width:16px; height:16px;}
     .bullet b{display:block; margin-bottom:4px;}
-    .bullet span{ color: var(--muted); font-size:13px; line-height:1.55; }
-
-    /* Best */
-    .best{
-      padding:20px;
-      border-radius: var(--radius);
-      border:1px solid rgba(22,163,74,.18);
-      background: linear-gradient(180deg, rgba(22,163,74,.08), rgba(255,255,255,.78));
-      box-shadow: 0 18px 44px rgba(22,163,74,.08);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-    .best h3{ margin:0; font-size:18px; }
-    .best p{ margin:6px 0 0; color: var(--muted); line-height:1.6; max-width: 96ch; }
-    .price-hint{
-      margin-top:10px;
-      color: var(--muted2);
-      font-size:13px;
-      line-height:1.6;
-    }
+    .bullet span{color:var(--muted); font-size:13px; line-height:1.55;}
 
     /* Insights */
-    .insights{
+    .insights{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+    @media (max-width:980px){ .insights{grid-template-columns:1fr;} }
+    .ins{padding:18px; border-radius:var(--r); background:rgba(255,255,255,.78); border:1px solid var(--line); box-shadow:0 14px 34px rgba(15,23,42,.06);}
+    .ins h4{margin:0 0 10px; font-size:17px;}
+    .ins p{margin:0; color:var(--muted); line-height:1.7; font-size:14px;}
+
+    /* Value proposition after insights (GREEN) */
+    .vp-after{
+      padding:18px; border-radius:var(--r);
+      border:1px solid rgba(22,163,74,.18);
+      background:linear-gradient(180deg, rgba(22,163,74,.10), rgba(255,255,255,.78));
+      box-shadow:0 14px 34px rgba(22,163,74,.07);
+    }
+    .vp-after h3{margin:0 0 8px; font-size:18px;}
+    .vp-after p{margin:0; color:var(--muted); line-height:1.7;}
+
+    /* Offer block */
+    .offer-head{padding:18px; border-radius:var(--r); background:rgba(255,255,255,.78); border:1px solid rgba(37,99,235,.16); box-shadow:0 14px 34px rgba(15,23,42,.06);}
+    .offer-head h3{margin:0 0 8px; font-size:18px;}
+    .offer-head p{margin:0; color:var(--muted); line-height:1.7;}
+
+    .plans{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:repeat(3,1fr);
       gap:14px;
+      margin-top:14px;
     }
-    @media (max-width: 980px){ .insights{grid-template-columns:1fr;} }
-    .ins{
-      padding:18px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.78);
+    @media (max-width:980px){ .plans{grid-template-columns:1fr;} }
+    .plan{
+      padding:18px; border-radius:var(--r);
+      background:rgba(255,255,255,.82);
       border:1px solid var(--line);
-      box-shadow: 0 14px 34px rgba(15,23,42,.06);
+      box-shadow:0 14px 34px rgba(15,23,42,.06);
+      position:relative;
     }
-    .ins h4{ margin:0 0 10px; font-size:17px; }
-    .ins p{ margin:0; color: var(--muted); line-height:1.7; font-size:14px; }
+    .badge{
+      position:absolute; top:14px; right:14px;
+      padding:8px 10px; border-radius:999px;
+      font-weight:900; font-size:12px;
+      background:rgba(37,99,235,.10);
+      border:1px solid rgba(37,99,235,.18);
+      color:rgba(14,19,37,.84);
+    }
+    .plan h4{margin:0 0 6px; font-size:18px;}
+    .plan .price{margin:0 0 12px; color:var(--muted2); font-weight:900;}
+    .plan ul{margin:10px 0 0; padding-left:18px; color:var(--muted); line-height:1.75;}
+    .plan li b{color:var(--text);}
+    .plan .no{margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(180,83,9,.18); background:linear-gradient(180deg, rgba(180,83,9,.08), rgba(255,255,255,.82)); color:var(--muted); font-size:13px; line-height:1.6;}
+    .plan .no b{color:rgba(120,53,15,.95);}
+    .plan .cta{margin-top:14px;}
+
+    .project{
+      margin-top:14px;
+      padding:18px; border-radius:var(--r);
+      border:1px solid rgba(22,163,74,.18);
+      background:linear-gradient(180deg, rgba(22,163,74,.08), rgba(255,255,255,.82));
+      box-shadow:0 14px 34px rgba(22,163,74,.07);
+    }
+    .project h4{margin:0 0 8px; font-size:18px;}
+    .project p{margin:0; color:var(--muted); line-height:1.7;}
+    .project ul{margin:10px 0 0; padding-left:18px; color:var(--muted); line-height:1.75;}
 
     /* Contact */
-    .contact-grid{
-      display:grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){ .contact-grid{grid-template-columns:1fr;} }
-    .contact-card{
-      padding:18px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.78);
-      border:1px solid var(--line);
-      box-shadow: 0 14px 34px rgba(15,23,42,.06);
-    }
-    .contact-card h3{ margin:0 0 8px; }
-    .contact-card p{ margin:0 0 14px; color: var(--muted); line-height:1.7; }
-    .pill{
-      display:flex; align-items:center; gap:10px;
-      padding:12px 12px;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.86);
-      margin:12px 0;
-      font-weight:700;
-    }
-    .pill small{display:block; font-weight:700; color: var(--muted2);}
-    .pill b{display:block;}
-    .cal-wrap{
-      padding:16px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.78);
-      border:1px solid var(--line);
-      box-shadow: 0 14px 34px rgba(15,23,42,.06);
-      overflow:hidden;
-    }
-    .cal-top{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
-      margin-bottom:10px;
-    }
-    .cal-top h3{margin:0;}
-    .cal-top p{margin:0; color:var(--muted2); font-size:13px;}
-    iframe{border:0; width:100%; border-radius: 16px; background:white; min-height:620px;}
-    @media (max-width: 520px){ iframe{ min-height:720px; } }
+    .contact-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:14px; align-items:stretch;}
+    @media (max-width:980px){ .contact-grid{grid-template-columns:1fr;} }
+    .contact-card{padding:18px; border-radius:var(--r); background:rgba(255,255,255,.78); border:1px solid var(--line); box-shadow:0 14px 34px rgba(15,23,42,.06);}
+    .contact-card h3{margin:0 0 8px;}
+    .contact-card p{margin:0 0 14px; color:var(--muted); line-height:1.7;}
+    .pill{display:flex; align-items:center; gap:10px; padding:12px; border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,.86); margin:12px 0; font-weight:800;}
+    .pill small{display:block; font-weight:800; color:var(--muted2);}
+    iframe{border:0; width:100%; border-radius:16px; background:#fff; min-height:620px;}
+    @media (max-width:520px){ iframe{min-height:720px;} }
 
-    footer{ padding:22px 0 34px; color: var(--muted2); font-size:13px; }
+    footer{padding:22px 0 34px; color:var(--muted2); font-size:13px;}
 
-    .fade-in{ animation: rise .6s ease both; }
-    @keyframes rise{
-      from{opacity:0; transform: translateY(10px);}
-      to{opacity:1; transform: translateY(0);}
-    }
-    @media (prefers-reduced-motion: reduce){
-      .fade-in{ animation: none !important; }
-      .btn{ transition:none !important; }
-      body{ background-attachment: initial; }
-    }
+    @media (prefers-reduced-motion: reduce){ body{background-attachment:initial;} .btn{transition:none} }
   </style>
 </head>
 
 <body>
-  <a href="#main" class="skip">Saltar al contenido</a>
-
   <header>
     <div class="wrap">
       <div class="nav">
-        <div class="brand">
-          <img src="logo.png" alt="Fit for Advisory">
-        </div>
+        <div class="brand"><img src="logo.png" alt="Fit for Advisory"></div>
 
         <nav aria-label="primary">
           <ul>
@@ -622,9 +247,7 @@
 
           <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M4 7h16"></path>
-              <path d="M4 12h16"></path>
-              <path d="M4 17h16"></path>
+              <path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path>
             </svg>
           </button>
 
@@ -651,14 +274,9 @@
     <section class="hero">
       <div class="wrap">
         <div class="hero-grid">
+          <div>
+            <div class="kicker"><span class="dot" aria-hidden="true"></span><span data-i="hero.kicker">Boutique advisory para PyMEs · Estrategia, Finanzas & Ejecución</span></div>
 
-          <div class="fade-in">
-            <div class="kicker">
-              <span class="dot" aria-hidden="true"></span>
-              <span data-i="hero.kicker">Boutique advisory para PyMEs · Estrategia, Finanzas & Ejecución</span>
-            </div>
-
-            <!-- New headline (requested) -->
             <h1 data-i="hero.h1">Claridad financiera.<br/>Decisiones que escalan.</h1>
 
             <p class="lead" data-i="hero.lead">
@@ -666,16 +284,10 @@
               Nosotros lo convertimos en un <strong>modelo</strong> y un <strong>plan</strong> que puedas defender y ejecutar.
             </p>
 
-            <!-- Expanded value proposition (requested) -->
+            <!-- NO red background (green) -->
             <div class="value-line" data-i="hero.value">
-              <b>Soporte de nivel CFO, sin costo full-time.</b>
-              <span class="mut">
-                Servicio a medida para PyMEs con ambición de crecer que hoy no pueden pagar un CFO/director de una empresa top,
-                pero quieren decidir con estándares y buenas prácticas de otra escala.
-              </span>
-              <span class="mut">
-                Te ayudamos a ordenar la información, construir escenarios y ejecutar decisiones con impacto.
-              </span>
+              <b>Para PyMEs con ambición de crecer</b> <span class="mut">que todavía no pueden (o no quieren) sumar un CFO full-time.</span>
+              <span class="mut">Accedé a una mirada de nivel CFO, a medida y por fracción del costo de un recurso full-time.</span>
             </div>
 
             <div class="hero-ctas">
@@ -686,15 +298,13 @@
 
             <div class="note" data-i="hero.note">
               Menos ruido, más decisiones: claridad que se traduce en foco, ejecución y resultados.
-              Trabajo “decision-grade” con modelos simples de operar y robustos de fondo.
+              Modelos simples de operar y robustos de fondo (escenarios, sensibilidad y gatillos).
             </div>
           </div>
 
-          <div class="glass pain fade-in" style="animation-delay:.05s;">
-            <div>
-              <div class="pain-title" data-i="hero.rightTitle">Lo que vemos seguido en PyMEs</div>
-              <div class="pain-sub" data-i="hero.rightSub">Cuando todo “funciona”, pero nadie puede explicar por qué.</div>
-            </div>
+          <div class="glass pain">
+            <div class="pain-title" data-i="hero.rightTitle">Lo que vemos seguido en PyMEs</div>
+            <div class="pain-sub" data-i="hero.rightSub">Cuando todo “funciona”, pero nadie puede explicar por qué.</div>
 
             <div class="grid4">
               <div class="mini">
@@ -721,46 +331,14 @@
 
             <div class="outcome">
               <strong data-i="hero.outcomeTitle">Resultado esperado</strong>
-              <span data-i="hero.outcomeText">
-                Diagnóstico claro + modelo con escenarios + plan de decisiones priorizado.
-                Listo para ejecutar y monitorear.
-              </span>
+              <span data-i="hero.outcomeText">Diagnóstico claro + modelo con escenarios + plan de decisiones priorizado. Listo para ejecutar y monitorear.</span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- PARA QUIEN -->
-    <section id="who">
-      <div class="wrap">
-        <div class="sec-head">
-          <div>
-            <h2 data-i="who.h2">Para quién es</h2>
-            <p data-i="who.p">
-              Para PyMEs y empresas medianas con ambición que quieren elevar el estándar de decisión sin sumar un costo fijo ejecutivo.
-            </p>
-          </div>
-        </div>
-
-        <div class="who">
-          <h3 data-i="who.h3">La mirada de una empresa de otra escala (sin sobreactuar)</h3>
-          <p data-i="who.body">
-            La propuesta está pensada para equipos que necesitan criterio y estructura “de nivel CFO”,
-            pero todavía no pueden pagar sueldos altos ni darse el lujo de un recurso caro full time.
-            Trabajamos a medida, con buenas prácticas, para que la empresa decida con información sólida y ejecute con foco.
-          </p>
-          <ul>
-            <li data-i="who.b1"><b>Founders ambiciosos</b> que quieren crecer con disciplina financiera.</li>
-            <li data-i="who.b2"><b>Empresas</b> con tensión de flujo de fondos, discusión de precios o inversión sin escenarios.</li>
-            <li data-i="who.b3"><b>Equipos</b> que buscan profesionalizar gestión y reporting sin armar un staff grande.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- HERRAMIENTAS -->
+    <!-- TOOLS -->
     <section id="tools">
       <div class="wrap">
         <div class="sec-head">
@@ -774,16 +352,14 @@
           <div class="chips" aria-label="tooling">
             <div class="chip"><span class="dot" aria-hidden="true"></span><span>Power Query</span></div>
             <div class="chip"><span class="dot" aria-hidden="true"></span><span>Power BI</span></div>
-            <div class="chip"><span class="dot" aria-hidden="true"></span><span>Excel (modelos)</span></div>
+            <div class="chip"><span class="dot" aria-hidden="true"></span><span data-i="tools.excel">Excel (modelización)</span></div>
+            <div class="chip"><span class="dot" aria-hidden="true"></span><span>AI</span></div>
             <div class="chip"><span class="dot" aria-hidden="true"></span><span data-i="tools.montecarlo">Simulaciones Monte Carlo</span></div>
             <div class="chip"><span class="dot" aria-hidden="true"></span><span data-i="tools.reg">Regresiones / estadística</span></div>
             <div class="chip"><span class="dot" aria-hidden="true"></span><span data-i="tools.sens">Análisis de sensibilidad</span></div>
             <div class="chip"><span class="dot" aria-hidden="true"></span><span data-i="tools.bin">Árboles binomiales</span></div>
           </div>
-
-          <small data-i="tools.note">
-            Usamos estas herramientas para proyecciones más contundentes: supuestos explícitos, rangos, escenarios y gatillos para decidir a tiempo.
-          </small>
+          <small data-i="tools.note">Usamos estas herramientas para proyecciones más contundentes: supuestos explícitos, rangos, escenarios y gatillos para decidir a tiempo.</small>
         </div>
       </div>
     </section>
@@ -794,10 +370,7 @@
         <div class="sec-head">
           <div>
             <h2 data-i="services.h2">Servicios</h2>
-            <p data-i="services.p">
-              Bloques que combinamos según tu caso. Foco en análisis económico-financiero y modelo de negocio,
-              con delivery punta a punta.
-            </p>
+            <p data-i="services.p">Bloques que combinamos según tu caso. Foco en análisis económico-financiero y modelo de negocio, con delivery punta a punta.</p>
           </div>
         </div>
 
@@ -805,28 +378,22 @@
           <div class="card">
             <div class="ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 3v18h18"></path>
-                <path d="M7 14l3-3 4 4 5-7"></path>
+                <path d="M3 3v18h18"></path><path d="M7 14l3-3 4 4 5-7"></path>
               </svg>
             </div>
             <h3 data-i="services.s1h">Rentabilidad & precios</h3>
-            <p data-i="services.s1p">
-              Márgenes, mix y palancas: producto/canal/cliente, estructura de costos, pricing y unit economics.
-            </p>
+            <p data-i="services.s1p">Márgenes, mix y palancas: producto/canal/cliente, estructura de costos, pricing y unit economics.</p>
           </div>
 
           <div class="card">
             <div class="ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 7H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
-                <path d="M16 7V5a2 2 0 0 0-2-2H6"></path>
-                <path d="M18 12h2"></path>
+                <path d="M16 7V5a2 2 0 0 0-2-2H6"></path><path d="M18 12h2"></path>
               </svg>
             </div>
             <h3 data-i="services.s2h">Flujo de fondos & capital de trabajo</h3>
-            <p data-i="services.s2p">
-              Forecast con escenarios: cobros/pagos, deuda, políticas, alertas tempranas y disciplina de seguimiento.
-            </p>
+            <p data-i="services.s2p">Forecast con escenarios: cobros/pagos, deuda, políticas, alertas tempranas y disciplina de seguimiento.</p>
           </div>
 
           <div class="card">
@@ -837,24 +404,8 @@
               </svg>
             </div>
             <h3 data-i="services.s3h">Proyectos & valuación</h3>
-            <p data-i="services.s3p">
-              Evaluación de proyectos, casos de negocio, due diligence económico y soporte para decisiones de crecimiento (incluye M&A).
-            </p>
+            <p data-i="services.s3p">Evaluación de proyectos, casos de negocio, due diligence económico y soporte para decisiones de crecimiento (incluye M&A).</p>
           </div>
-        </div>
-
-        <div style="height:14px"></div>
-
-        <div class="best">
-          <div>
-            <h3 data-i="best.h3">Cuándo esto funciona mejor</h3>
-            <p data-i="best.p">
-              Cuando necesitás claridad rápida para decidir: discusión de precios/márgenes, tensión en flujo de fondos,
-              inversión, expansión o “crecer sin romper”. Si el problema se siente pero no se puede cuantificar, lo destrabamos en semanas.
-            </p>
-            <div class="price-hint" data-i="best.price">Planes mensuales desde <b>USD 500</b> (según alcance).</div>
-          </div>
-          <a class="btn primary" href="#contact" data-i="best.cta">Agendar una conversación</a>
         </div>
       </div>
     </section>
@@ -865,9 +416,7 @@
         <div class="sec-head">
           <div>
             <h2 data-i="method.h2">Cómo trabajamos</h2>
-            <p data-i="method.p">
-              Proceso simple y ejecutivo: convertir información en decisiones accionables.
-            </p>
+            <p data-i="method.p">Proceso simple y ejecutivo: convertir información en decisiones accionables.</p>
           </div>
         </div>
 
@@ -877,26 +426,12 @@
             <p data-i="method.aText">Relevamiento breve, hipótesis y validación con información real. Identificamos drivers y quick wins vs. cambios estructurales.</p>
             <div class="bullets">
               <div class="bullet">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5"></path>
-                  </svg>
-                </div>
-                <div>
-                  <b data-i="method.aB1">Mapa económico</b>
-                  <span data-i="method.aS1">Drivers, márgenes, estructura y flujo de fondos.</span>
-                </div>
+                <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+                <div><b data-i="method.aB1">Mapa económico</b><span data-i="method.aS1">Drivers, márgenes, estructura y flujo de fondos.</span></div>
               </div>
               <div class="bullet">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5"></path>
-                  </svg>
-                </div>
-                <div>
-                  <b data-i="method.aB2">Información “decision-grade”</b>
-                  <span data-i="method.aS2">Definimos qué medir, cómo y con qué periodicidad.</span>
-                </div>
+                <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+                <div><b data-i="method.aB2">Información “decision-grade”</b><span data-i="method.aS2">Definimos qué medir, cómo y con qué periodicidad.</span></div>
               </div>
             </div>
           </div>
@@ -906,26 +441,12 @@
             <p data-i="method.bText">Modelo con escenarios y sensibilidad. Recomendaciones accionables y paquete ejecutivo para decidir.</p>
             <div class="bullets">
               <div class="bullet">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5"></path>
-                  </svg>
-                </div>
-                <div>
-                  <b data-i="method.bB1">Escenarios + sensibilidad</b>
-                  <span data-i="method.bS1">Precios, volumen, costos, plazos, FX.</span>
-                </div>
+                <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+                <div><b data-i="method.bB1">Escenarios + sensibilidad</b><span data-i="method.bS1">Precios, volumen, costos, plazos, FX.</span></div>
               </div>
               <div class="bullet">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5"></path>
-                  </svg>
-                </div>
-                <div>
-                  <b data-i="method.bB2">Gatillos de decisión</b>
-                  <span data-i="method.bS2">Rangos y thresholds para actuar a tiempo.</span>
-                </div>
+                <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+                <div><b data-i="method.bB2">Gatillos de decisión</b><span data-i="method.bS2">Rangos y thresholds para actuar a tiempo.</span></div>
               </div>
             </div>
           </div>
@@ -935,36 +456,19 @@
             <p data-i="method.cText">Cadencia liviana. Ajustes, control de desvíos y soporte en decisiones de inversión/crecimiento.</p>
             <div class="bullets">
               <div class="bullet">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5"></path>
-                  </svg>
-                </div>
-                <div>
-                  <b data-i="method.cB1">Tablero ejecutivo</b>
-                  <span data-i="method.cS1">Pocos indicadores, bien definidos y accionables.</span>
-                </div>
+                <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+                <div><b data-i="method.cB1">Tablero ejecutivo</b><span data-i="method.cS1">Pocos indicadores, bien definidos y accionables.</span></div>
               </div>
               <div class="bullet">
-                <div class="tick" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 6 9 17l-5-5"></path>
-                  </svg>
-                </div>
-                <div>
-                  <b data-i="method.cB2">Decisiones con soporte</b>
-                  <span data-i="method.cS2">Crecimiento, inversión, financiamiento, M&A cuando aplica.</span>
-                </div>
+                <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+                <div><b data-i="method.cB2">Decisiones con soporte</b><span data-i="method.cS2">Crecimiento, inversión, financiamiento, M&A cuando aplica.</span></div>
               </div>
             </div>
           </div>
 
           <div class="step">
             <div class="tag"><span class="n">+</span><span data-i="method.dTitle">Equipo multidisciplinario</span></div>
-            <p data-i="method.dText">
-              Operamos como boutique: liderazgo económico-financiero + equipo complementario (impuestos, legal, procesos, comercial y sistemas) para proyectos puntuales.
-              La coordinación y el estándar de entrega es único.
-            </p>
+            <p data-i="method.dText">Operamos como boutique: liderazgo económico-financiero + equipo complementario (impuestos, legal, procesos, comercial y sistemas) para proyectos puntuales. La coordinación y el estándar de entrega es único.</p>
           </div>
         </div>
       </div>
@@ -981,33 +485,82 @@
         </div>
 
         <div class="insights">
-          <div class="ins">
-            <h4 data-i="ins.i1h">Rentabilidad ≠ ventas</h4>
-            <p data-i="ins.i1p">
-              Crecer sin estructura de márgenes y costos suele tensionar el flujo de fondos. Primer paso: mapear contribución por producto/canal/cliente y detectar “subsidios” invisibles.
-            </p>
+          <div class="ins"><h4 data-i="ins.i1h">Rentabilidad ≠ ventas</h4><p data-i="ins.i1p">Crecer sin estructura de márgenes y costos suele tensionar el flujo de fondos. Primer paso: mapear contribución por producto/canal/cliente y detectar “subsidios” invisibles.</p></div>
+          <div class="ins"><h4 data-i="ins.i2h">El flujo de fondos se diseña</h4><p data-i="ins.i2p">Forecast + políticas de cobro/pago + disciplina de seguimiento. Con escenarios y triggers, el equipo actúa antes de que el problema sea urgente.</p></div>
+          <div class="ins"><h4 data-i="ins.i3h">Escenarios &gt; opiniones</h4><p data-i="ins.i3p">Cuando el negocio es sensible, el escenario manda: rangos, sensibilidad y supuestos explícitos. De “creo que” a “si pasa X, hacemos Y”.</p></div>
+          <div class="ins"><h4 data-i="ins.i4h">Menos tablero, más decisión</h4><p data-i="ins.i4p">Un tablero sirve si dispara acciones. Pocos indicadores, bien definidos, con periodicidad y responsables. La visualización es el final: primero se define el sistema de decisión.</p></div>
+        </div>
+
+        <!-- Value prop AFTER insights (GREEN) -->
+        <div style="height:14px"></div>
+        <div class="vp-after" aria-label="Value proposition">
+          <h3 data-i="vp.h3">CFO-level, sin costo full-time</h3>
+          <p data-i="vp.p">Para PyMEs con ambición de crecer que todavía no pueden (o no quieren) sumar un CFO full-time. Accedé a una mirada de nivel CFO, a medida y por fracción del costo de un recurso full-time.</p>
+        </div>
+
+        <!-- Offer -->
+        <div style="height:14px"></div>
+        <div class="offer-head">
+          <h3 data-i="offer.h3">🎯 Qué vendemos realmente</h3>
+          <p data-i="offer.p"><b>No</b> vendemos horas ni planillas. Vendemos claridad financiera estratégica, dirección para decisiones de crecimiento, visión de alguien que ya gestionó empresas con otra escala y orden para crecer sin desordenarse.</p>
+        </div>
+
+        <div class="plans">
+          <div class="plan">
+            <div class="badge" data-i="plan1.badge">Esencial</div>
+            <h4 data-i="plan1.h">CFO Light / Dirección Financiera Esencial</h4>
+            <p class="price" data-i="plan1.price">USD 600–700 / mes</p>
+            <div data-i="plan1.for"><b>Para:</b> empresas ordenadas que ya facturan, pero necesitan criterio financiero para decidir mejor.</div>
+            <ul>
+              <li data-i="plan1.i1"><b>Modelo</b> de flujo de fondos profesional</li>
+              <li data-i="plan1.i2"><b>Tablero</b> financiero mensual (márgenes, costos, rentabilidad real)</li>
+              <li data-i="plan1.i3"><b>KPIs</b> clave definidos según el negocio</li>
+              <li data-i="plan1.i4"><b>2 reuniones</b>/mes (45 min) + revisión de desvíos</li>
+              <li data-i="plan1.i5"><b>Soporte async</b> acotado (48h) + hasta X consultas/semana</li>
+            </ul>
+            <div class="no" data-i="plan1.no"><b>No incluye:</b> negociación con bancos, reestructuración profunda, análisis comercial estratégico o proyectos especiales.</div>
+            <div class="cta"><a class="btn soft" href="#contact" data-i="plan.cta">Definir mi plan ideal</a></div>
           </div>
 
-          <div class="ins">
-            <h4 data-i="ins.i2h">El flujo de fondos se diseña</h4>
-            <p data-i="ins.i2p">
-              Forecast + políticas de cobro/pago + disciplina de seguimiento. Con escenarios y triggers, el equipo actúa antes de que el problema sea urgente.
-            </p>
+          <div class="plan">
+            <div class="badge" data-i="plan2.badge">Crecimiento</div>
+            <h4 data-i="plan2.h">Growth Partner / Dirección Financiera Estratégica</h4>
+            <p class="price" data-i="plan2.price">USD 1.000–1.500 / mes</p>
+            <div data-i="plan2.for"><b>Para:</b> empresas en crecimiento activo, con decisiones todas las semanas. Acá sos parte del equipo directivo.</div>
+            <ul>
+              <li data-i="plan2.i1"><b>Todo</b> lo del Plan 1</li>
+              <li data-i="plan2.i2"><b>Forecast rolling</b> 6–12 meses + escenarios</li>
+              <li data-i="plan2.i3"><b>Gatillos</b> financieros (cuándo frenar / acelerar)</li>
+              <li data-i="plan2.i4"><b>Pricing</b> y contribución por línea + evaluación de inversiones</li>
+              <li data-i="plan2.i5"><b>1 reunión</b>/semana + soporte prioritario (24–48h)</li>
+            </ul>
+            <div class="cta"><a class="btn primary" href="#contact" data-i="plan.cta">Definir mi plan ideal</a></div>
           </div>
 
-          <div class="ins">
-            <h4 data-i="ins.i3h">Escenarios &gt; opiniones</h4>
-            <p data-i="ins.i3p">
-              Cuando el negocio es sensible, el escenario manda: rangos, sensibilidad y supuestos explícitos. De “creo que” a “si pasa X, hacemos Y”.
-            </p>
+          <div class="plan">
+            <div class="badge" data-i="plan3.badge">Top</div>
+            <h4 data-i="plan3.h">Strategic / CFO Externo</h4>
+            <p class="price" data-i="plan3.price">USD 1.800–2.500 / mes</p>
+            <div data-i="plan3.for"><b>Para:</b> empresas más grandes o con mayor complejidad.</div>
+            <ul>
+              <li data-i="plan3.i1"><b>Comité directivo</b> y gobierno de decisión</li>
+              <li data-i="plan3.i2"><b>Interacción</b> con contador / estudio externo</li>
+              <li data-i="plan3.i3"><b>Bancos / inversores</b> + estructura financiera</li>
+              <li data-i="plan3.i4"><b>Deck</b> financiero si buscan capital</li>
+              <li data-i="plan3.i5"><b>Expansión</b> y evaluación de crecimiento</li>
+            </ul>
+            <div class="cta"><a class="btn soft" href="#contact" data-i="plan.cta">Definir mi plan ideal</a></div>
           </div>
+        </div>
 
-          <div class="ins">
-            <h4 data-i="ins.i4h">Menos tablero, más decisión</h4>
-            <p data-i="ins.i4p">
-              Un tablero sirve si dispara acciones. Pocos indicadores, bien definidos, con periodicidad y responsables. La visualización es el final: primero se define el sistema de decisión.
-            </p>
-          </div>
+        <div class="project">
+          <h4 data-i="proj.h">💥 Proyecto inicial (clave comercial): Diagnóstico + Modelo + Roadmap</h4>
+          <p data-i="proj.p"><b>USD 1.500–4.000</b> (one-shot) · <b>2–4 semanas</b>. Filtra clientes poco serios, paga el setup y te posiciona profesional. Luego migramos a un plan mensual.</p>
+          <ul>
+            <li data-i="proj.i1">Radiografía financiera + identificación de fugas de margen</li>
+            <li data-i="proj.i2">Modelo profesional (escenarios, sensibilidad, supuestos)</li>
+            <li data-i="proj.i3">Roadmap de 6 meses + recomendaciones accionables</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -1017,11 +570,8 @@
       <div class="wrap">
         <div class="sec-head">
           <div>
-            <h2 data-i="contact.h2">Hablemos</h2>
-            <p data-i="contact.p">
-              Arrancamos con una conversación corta: contexto, problemas, objetivos y próximos pasos.
-              Si tiene sentido, armamos una propuesta a medida.
-            </p>
+            <h2 data-i="contact.h2">Contactanos</h2>
+            <p data-i="contact.p">Conversemos 45 minutos para entender tu contexto y definir cuál es el plan ideal según tu necesidad y nivel de ambición.</p>
           </div>
         </div>
 
@@ -1033,8 +583,7 @@
             <div class="pill">
               <div style="width:34px;height:34px;border-radius:14px;display:grid;place-items:center;background:rgba(37,99,235,.10);border:1px solid rgba(37,99,235,.18);" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16v16H4z"></path>
-                  <path d="m22 6-10 7L2 6"></path>
+                  <path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path>
                 </svg>
               </div>
               <div>
@@ -1046,25 +595,16 @@
             <a class="btn primary" href="mailto:contact@fitforadvisory.com" data-i="contact.emailBtn">Escribir por email</a>
           </div>
 
-          <div class="cal-wrap">
-            <div class="cal-top">
+          <div class="cal-wrap" style="padding:16px;border-radius:var(--r);background:rgba(255,255,255,.78);border:1px solid var(--line);box-shadow:0 14px 34px rgba(15,23,42,.06);overflow:hidden;">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:10px;">
               <div>
-                <h3 data-i="cal.h3">Agendá una conversación</h3>
-                <p data-i="cal.p">Online · 45 min · Días hábiles</p>
+                <h3 style="margin:0" data-i="cal.h3">Agendá una conversación</h3>
+                <p style="margin:0;color:var(--muted2);font-size:13px" data-i="cal.p">Online · 45 min · Días hábiles</p>
               </div>
               <a class="btn" href="https://calendly.com/fitforadvisory/meet" target="_blank" rel="noopener" data-i="cal.open">Abrir en Calendly</a>
             </div>
 
-            <iframe
-              title="Calendly"
-              src="https://calendly.com/fitforadvisory/meet?hide_event_type_details=1&hide_gdpr_banner=1"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-
-            <p style="margin:10px 0 0;color:var(--muted2);font-size:12.5px;line-height:1.6" data-i="cal.note">
-              Tip: en Calendly podés configurar el “Host name” y la marca del evento para que no aparezca tu nombre personal.
-            </p>
+            <iframe title="Calendly" src="https://calendly.com/fitforadvisory/meet?hide_event_type_details=1&hide_gdpr_banner=1" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>
@@ -1082,16 +622,14 @@
 
   <script>
     const I18N = {
-      es: {
+      es:{
         "nav.services":"Servicios","nav.method":"Método","nav.insights":"Insights","nav.contact":"Contactar","nav.cta":"Agendar",
-
         "hero.kicker":"Boutique advisory para PyMEs · Estrategia, Finanzas & Ejecución",
         "hero.h1":"Claridad financiera.<br/>Decisiones que escalan.",
         "hero.lead":"Cuando el negocio crece, los problemas se vuelven difusos: <strong>márgenes</strong>, <strong>flujo de fondos</strong>, <strong>precios</strong>, inversión y prioridades. Nosotros lo convertimos en un <strong>modelo</strong> y un <strong>plan</strong> que puedas defender y ejecutar.",
-        "hero.value":"<b>Soporte de nivel CFO, sin costo full-time.</b> <span class='mut'>Servicio a medida para PyMEs con ambición de crecer que hoy no pueden pagar un CFO/director de una empresa top, pero quieren decidir con estándares y buenas prácticas de otra escala.</span> <span class='mut'>Te ayudamos a ordenar la información, construir escenarios y ejecutar decisiones con impacto.</span>",
+        "hero.value":"<b>Para PyMEs con ambición de crecer</b> <span class='mut'>que todavía no pueden (o no quieren) sumar un CFO full-time.</span> <span class='mut'>Accedé a una mirada de nivel CFO, a medida y por fracción del costo de un recurso full-time.</span>",
         "hero.ctaEmail":"Escribir por email","hero.ctaMeet":"Agendar una conversación","hero.ctaServices":"Ver servicios",
-        "hero.note":"Menos ruido, más decisiones: claridad que se traduce en foco, ejecución y resultados. Trabajo “decision-grade” con modelos simples de operar y robustos de fondo.",
-
+        "hero.note":"Menos ruido, más decisiones: claridad que se traduce en foco, ejecución y resultados. Modelos simples de operar y robustos de fondo (escenarios, sensibilidad y gatillos).",
         "hero.rightTitle":"Lo que vemos seguido en PyMEs","hero.rightSub":"Cuando todo “funciona”, pero nadie puede explicar por qué.",
         "hero.box1cap":"Rentabilidad","hero.box1h":"Márgenes “raros”","hero.box1p":"No está claro qué producto/canal/cliente financia al resto.",
         "hero.box2cap":"Flujo de fondos","hero.box2h":"Tensión recurrente","hero.box2p":"La decisión llega tarde: falta forecast y gatillos.",
@@ -1099,95 +637,74 @@
         "hero.box4cap":"Gestión","hero.box4h":"Reportes manuales","hero.box4p":"Errores y poca confianza en la información. Mucho trabajo “a mano”.",
         "hero.outcomeTitle":"Resultado esperado","hero.outcomeText":"Diagnóstico claro + modelo con escenarios + plan de decisiones priorizado. Listo para ejecutar y monitorear.",
 
-        "who.h2":"Para quién es",
-        "who.p":"Para PyMEs y empresas medianas con ambición que quieren elevar el estándar de decisión sin sumar un costo fijo ejecutivo.",
-        "who.h3":"La mirada de una empresa de otra escala (sin sobreactuar)",
-        "who.body":"La propuesta está pensada para equipos que necesitan criterio y estructura “de nivel CFO”, pero todavía no pueden pagar sueldos altos ni darse el lujo de un recurso caro full time. Trabajamos a medida, con buenas prácticas, para que la empresa decida con información sólida y ejecute con foco.",
-        "who.b1":"<b>Founders ambiciosos</b> que quieren crecer con disciplina financiera.",
-        "who.b2":"<b>Empresas</b> con tensión de flujo de fondos, discusión de precios o inversión sin escenarios.",
-        "who.b3":"<b>Equipos</b> que buscan profesionalizar gestión y reporting sin armar un staff grande.",
-
-        "tools.h2":"Herramientas y enfoque",
-        "tools.p":"Analítica aplicada para decisiones: rápido de entender, difícil de refutar.",
-        "tools.montecarlo":"Simulaciones Monte Carlo",
-        "tools.reg":"Regresiones / estadística",
-        "tools.sens":"Análisis de sensibilidad",
-        "tools.bin":"Árboles binomiales",
+        "tools.h2":"Herramientas y enfoque","tools.p":"Analítica aplicada para decisiones: rápido de entender, difícil de refutar.",
+        "tools.excel":"Excel (modelización)","tools.montecarlo":"Simulaciones Monte Carlo","tools.reg":"Regresiones / estadística","tools.sens":"Análisis de sensibilidad","tools.bin":"Árboles binomiales",
         "tools.note":"Usamos estas herramientas para proyecciones más contundentes: supuestos explícitos, rangos, escenarios y gatillos para decidir a tiempo.",
 
-        "services.h2":"Servicios",
-        "services.p":"Bloques que combinamos según tu caso. Foco en análisis económico-financiero y modelo de negocio, con delivery punta a punta.",
-        "services.s1h":"Rentabilidad & precios",
-        "services.s1p":"Márgenes, mix y palancas: producto/canal/cliente, estructura de costos, pricing y unit economics.",
-        "services.s2h":"Flujo de fondos & capital de trabajo",
-        "services.s2p":"Forecast con escenarios: cobros/pagos, deuda, políticas, alertas tempranas y disciplina de seguimiento.",
-        "services.s3h":"Proyectos & valuación",
-        "services.s3p":"Evaluación de proyectos, casos de negocio, due diligence económico y soporte para decisiones de crecimiento (incluye M&A).",
+        "services.h2":"Servicios","services.p":"Bloques que combinamos según tu caso. Foco en análisis económico-financiero y modelo de negocio, con delivery punta a punta.",
+        "services.s1h":"Rentabilidad & precios","services.s1p":"Márgenes, mix y palancas: producto/canal/cliente, estructura de costos, pricing y unit economics.",
+        "services.s2h":"Flujo de fondos & capital de trabajo","services.s2p":"Forecast con escenarios: cobros/pagos, deuda, políticas, alertas tempranas y disciplina de seguimiento.",
+        "services.s3h":"Proyectos & valuación","services.s3p":"Evaluación de proyectos, casos de negocio, due diligence económico y soporte para decisiones de crecimiento (incluye M&A).",
 
-        "best.h3":"Cuándo esto funciona mejor",
-        "best.p":"Cuando necesitás claridad rápida para decidir: discusión de precios/márgenes, tensión en flujo de fondos, inversión, expansión o “crecer sin romper”. Si el problema se siente pero no se puede cuantificar, lo destrabamos en semanas.",
-        "best.price":"Planes mensuales desde <b>USD 500</b> (según alcance).",
-        "best.cta":"Agendar una conversación",
+        "method.h2":"Cómo trabajamos","method.p":"Proceso simple y ejecutivo: convertir información en decisiones accionables.",
+        "method.aTitle":"Diagnóstico","method.aText":"Relevamiento breve, hipótesis y validación con información real. Identificamos drivers y quick wins vs. cambios estructurales.",
+        "method.aB1":"Mapa económico","method.aS1":"Drivers, márgenes, estructura y flujo de fondos.",
+        "method.aB2":"Información “decision-grade”","method.aS2":"Definimos qué medir, cómo y con qué periodicidad.",
+        "method.bTitle":"Solución a medida","method.bText":"Modelo con escenarios y sensibilidad. Recomendaciones accionables y paquete ejecutivo para decidir.",
+        "method.bB1":"Escenarios + sensibilidad","method.bS1":"Precios, volumen, costos, plazos, FX.",
+        "method.bB2":"Gatillos de decisión","method.bS2":"Rangos y thresholds para actuar a tiempo.",
+        "method.cTitle":"Seguimiento","method.cText":"Cadencia liviana. Ajustes, control de desvíos y soporte en decisiones de inversión/crecimiento.",
+        "method.cB1":"Tablero ejecutivo","method.cS1":"Pocos indicadores, bien definidos y accionables.",
+        "method.cB2":"Decisiones con soporte","method.cS2":"Crecimiento, inversión, financiamiento, M&A cuando aplica.",
+        "method.dTitle":"Equipo multidisciplinario","method.dText":"Operamos como boutique: liderazgo económico-financiero + equipo complementario (impuestos, legal, procesos, comercial y sistemas) para proyectos puntuales. La coordinación y el estándar de entrega es único.",
 
-        "method.h2":"Cómo trabajamos",
-        "method.p":"Proceso simple y ejecutivo: convertir información en decisiones accionables.",
-        "method.aTitle":"Diagnóstico",
-        "method.aText":"Relevamiento breve, hipótesis y validación con información real. Identificamos drivers y quick wins vs. cambios estructurales.",
-        "method.aB1":"Mapa económico",
-        "method.aS1":"Drivers, márgenes, estructura y flujo de fondos.",
-        "method.aB2":"Información “decision-grade”",
-        "method.aS2":"Definimos qué medir, cómo y con qué periodicidad.",
-        "method.bTitle":"Solución a medida",
-        "method.bText":"Modelo con escenarios y sensibilidad. Recomendaciones accionables y paquete ejecutivo para decidir.",
-        "method.bB1":"Escenarios + sensibilidad",
-        "method.bS1":"Precios, volumen, costos, plazos, FX.",
-        "method.bB2":"Gatillos de decisión",
-        "method.bS2":"Rangos y thresholds para actuar a tiempo.",
-        "method.cTitle":"Seguimiento",
-        "method.cText":"Cadencia liviana. Ajustes, control de desvíos y soporte en decisiones de inversión/crecimiento.",
-        "method.cB1":"Tablero ejecutivo",
-        "method.cS1":"Pocos indicadores, bien definidos y accionables.",
-        "method.cB2":"Decisiones con soporte",
-        "method.cS2":"Crecimiento, inversión, financiamiento, M&A cuando aplica.",
-        "method.dTitle":"Equipo multidisciplinario",
-        "method.dText":"Operamos como boutique: liderazgo económico-financiero + equipo complementario (impuestos, legal, procesos, comercial y sistemas) para proyectos puntuales. La coordinación y el estándar de entrega es único.",
+        "ins.h2":"Insights","ins.p":"Ideas cortas, accionables y orientadas a decisión. Útiles para founders y equipos directivos.",
+        "ins.i1h":"Rentabilidad ≠ ventas","ins.i1p":"Crecer sin estructura de márgenes y costos suele tensionar el flujo de fondos. Primer paso: mapear contribución por producto/canal/cliente y detectar “subsidios” invisibles.",
+        "ins.i2h":"El flujo de fondos se diseña","ins.i2p":"Forecast + políticas de cobro/pago + disciplina de seguimiento. Con escenarios y triggers, el equipo actúa antes de que el problema sea urgente.",
+        "ins.i3h":"Escenarios > opiniones","ins.i3p":"Cuando el negocio es sensible, el escenario manda: rangos, sensibilidad y supuestos explícitos. De “creo que” a “si pasa X, hacemos Y”.",
+        "ins.i4h":"Menos tablero, más decisión","ins.i4p":"Un tablero sirve si dispara acciones. Pocos indicadores, bien definidos, con periodicidad y responsables. La visualización es el final: primero se define el sistema de decisión.",
 
-        "ins.h2":"Insights",
-        "ins.p":"Ideas cortas, accionables y orientadas a decisión. Útiles para founders y equipos directivos.",
-        "ins.i1h":"Rentabilidad ≠ ventas",
-        "ins.i1p":"Crecer sin estructura de márgenes y costos suele tensionar el flujo de fondos. Primer paso: mapear contribución por producto/canal/cliente y detectar “subsidios” invisibles.",
-        "ins.i2h":"El flujo de fondos se diseña",
-        "ins.i2p":"Forecast + políticas de cobro/pago + disciplina de seguimiento. Con escenarios y triggers, el equipo actúa antes de que el problema sea urgente.",
-        "ins.i3h":"Escenarios > opiniones",
-        "ins.i3p":"Cuando el negocio es sensible, el escenario manda: rangos, sensibilidad y supuestos explícitos. De “creo que” a “si pasa X, hacemos Y”.",
-        "ins.i4h":"Menos tablero, más decisión",
-        "ins.i4p":"Un tablero sirve si dispara acciones. Pocos indicadores, bien definidos, con periodicidad y responsables. La visualización es el final: primero se define el sistema de decisión.",
+        "vp.h3":"CFO-level, sin costo full-time","vp.p":"Para PyMEs con ambición de crecer que todavía no pueden (o no quieren) sumar un CFO full-time. Accedé a una mirada de nivel CFO, a medida y por fracción del costo de un recurso full-time.",
 
-        "contact.h2":"Hablemos",
-        "contact.p":"Arrancamos con una conversación corta: contexto, problemas, objetivos y próximos pasos. Si tiene sentido, armamos una propuesta a medida.",
-        "contact.leftH":"Contacto",
-        "contact.leftP":"Escribinos por email (ES o EN). Respuesta en 24–48h hábiles.",
-        "contact.emailLabel":"Email",
-        "contact.emailBtn":"Escribir por email",
+        "offer.h3":"🎯 Qué vendemos realmente",
+        "offer.p":"<b>No</b> vendemos horas ni planillas. Vendemos claridad financiera estratégica, dirección para decisiones de crecimiento, visión de alguien que ya gestionó empresas con otra escala y orden para crecer sin desordenarse.",
 
-        "cal.h3":"Agendá una conversación",
-        "cal.p":"Online · 45 min · Días hábiles",
-        "cal.open":"Abrir en Calendly",
-        "cal.note":"Tip: en Calendly podés configurar el “Host name” y la marca del evento para que no aparezca tu nombre personal.",
+        "plan.cta":"Definir mi plan ideal",
+        "plan1.badge":"Esencial","plan1.h":"CFO Light / Dirección Financiera Esencial","plan1.price":"USD 600–700 / mes",
+        "plan1.for":"<b>Para:</b> empresas ordenadas que ya facturan, pero necesitan criterio financiero para decidir mejor.",
+        "plan1.i1":"<b>Modelo</b> de flujo de fondos profesional","plan1.i2":"<b>Tablero</b> financiero mensual (márgenes, costos, rentabilidad real)","plan1.i3":"<b>KPIs</b> clave definidos según el negocio",
+        "plan1.i4":"<b>2 reuniones</b>/mes (45 min) + revisión de desvíos","plan1.i5":"<b>Soporte async</b> acotado (48h) + hasta X consultas/semana",
+        "plan1.no":"<b>No incluye:</b> negociación con bancos, reestructuración profunda, análisis comercial estratégico o proyectos especiales.",
 
+        "plan2.badge":"Crecimiento","plan2.h":"Growth Partner / Dirección Financiera Estratégica","plan2.price":"USD 1.000–1.500 / mes",
+        "plan2.for":"<b>Para:</b> empresas en crecimiento activo, con decisiones todas las semanas. Acá sos parte del equipo directivo.",
+        "plan2.i1":"<b>Todo</b> lo del Plan 1","plan2.i2":"<b>Forecast rolling</b> 6–12 meses + escenarios","plan2.i3":"<b>Gatillos</b> financieros (cuándo frenar / acelerar)",
+        "plan2.i4":"<b>Pricing</b> y contribución por línea + evaluación de inversiones","plan2.i5":"<b>1 reunión</b>/semana + soporte prioritario (24–48h)",
+
+        "plan3.badge":"Top","plan3.h":"Strategic / CFO Externo","plan3.price":"USD 1.800–2.500 / mes",
+        "plan3.for":"<b>Para:</b> empresas más grandes o con mayor complejidad.",
+        "plan3.i1":"<b>Comité directivo</b> y gobierno de decisión","plan3.i2":"<b>Interacción</b> con contador / estudio externo",
+        "plan3.i3":"<b>Bancos / inversores</b> + estructura financiera","plan3.i4":"<b>Deck</b> financiero si buscan capital","plan3.i5":"<b>Expansión</b> y evaluación de crecimiento",
+
+        "proj.h":"💥 Proyecto inicial (clave comercial): Diagnóstico + Modelo + Roadmap",
+        "proj.p":"<b>USD 1.500–4.000</b> (one-shot) · <b>2–4 semanas</b>. Filtra clientes poco serios, paga el setup y te posiciona profesional. Luego migramos a un plan mensual.",
+        "proj.i1":"Radiografía financiera + identificación de fugas de margen","proj.i2":"Modelo profesional (escenarios, sensibilidad, supuestos)","proj.i3":"Roadmap de 6 meses + recomendaciones accionables",
+
+        "contact.h2":"Contactanos","contact.p":"Conversemos 45 minutos para entender tu contexto y definir cuál es el plan ideal según tu necesidad y nivel de ambición.",
+        "contact.leftH":"Contacto","contact.leftP":"Escribinos por email (ES o EN). Respuesta en 24–48h hábiles.",
+        "contact.emailLabel":"Email","contact.emailBtn":"Escribir por email",
+
+        "cal.h3":"Agendá una conversación","cal.p":"Online · 45 min · Días hábiles","cal.open":"Abrir en Calendly",
         "footer.note":"Estrategia · Finanzas · Ejecución — modelos para decidir."
       },
-
-      en: {
+      en:{
         "nav.services":"Services","nav.method":"Method","nav.insights":"Insights","nav.contact":"Contact","nav.cta":"Schedule",
-
         "hero.kicker":"Boutique advisory for SMEs · Strategy, Finance & Execution",
         "hero.h1":"Financial clarity.<br/>Decisions that scale.",
         "hero.lead":"As companies grow, problems become fuzzy: <strong>margins</strong>, <strong>cash flow</strong>, <strong>pricing</strong>, investments and priorities. We turn that into a <strong>model</strong> and an <strong>action plan</strong> you can defend and execute.",
-        "hero.value":"<b>CFO-level support, without full-time cost.</b> <span class='mut'>Tailor-made for ambitious SMEs that can’t justify a top-tier CFO/Director salary yet — but want best-practice decision standards from a larger-company mindset.</span> <span class='mut'>We organize information, build scenarios, and help execute decisions with impact.</span>",
+        "hero.value":"<b>For ambitious SMEs</b> <span class='mut'>that can’t (or don’t want to) add a full-time CFO yet.</span> <span class='mut'>Get CFO-level judgement, tailored, for a fraction of full-time cost.</span>",
         "hero.ctaEmail":"Email us","hero.ctaMeet":"Book a conversation","hero.ctaServices":"View services",
-        "hero.note":"Less noise, better decisions: clarity that turns into focus, execution and results. Decision-grade work with models that are simple to run and robust underneath.",
-
+        "hero.note":"Less noise, better decisions: clarity that turns into focus, execution and results. Simple-to-run models, robust underneath (scenarios, sensitivity and triggers).",
         "hero.rightTitle":"What we commonly see in SMEs","hero.rightSub":"Things “work”, but nobody can explain why.",
         "hero.box1cap":"Profitability","hero.box1h":"‘Weird’ margins","hero.box1p":"Unclear which product/channel/client funds the rest.",
         "hero.box2cap":"Cash flow","hero.box2h":"Recurring stress","hero.box2p":"Decisions arrive late: missing forecast and triggers.",
@@ -1195,82 +712,64 @@
         "hero.box4cap":"Management","hero.box4h":"Manual reporting","hero.box4p":"Errors and low confidence in the information. Too much work done by hand.",
         "hero.outcomeTitle":"Expected outcome","hero.outcomeText":"Clear diagnosis + scenario model + prioritized decision plan. Ready to execute and monitor.",
 
-        "who.h2":"Who it’s for",
-        "who.p":"For ambitious SMEs that want top-tier decision standards without adding full-time executive fixed cost.",
-        "who.h3":"A larger-company mindset (without the ego)",
-        "who.body":"Designed for teams that need CFO-level structure and judgement, but can’t justify high salaries or a costly full-time executive yet. We work tailor-made, bringing best practices so your company decides on solid information and executes with focus.",
-        "who.b1":"<b>Ambitious founders</b> who want growth with financial discipline.",
-        "who.b2":"<b>Companies</b> with cash-flow stress, pricing debates, or investing without scenarios.",
-        "who.b3":"<b>Teams</b> that want better management & reporting without building a large staff.",
-
-        "tools.h2":"Tools and approach",
-        "tools.p":"Applied analytics for decisions: easy to grasp, hard to argue with.",
-        "tools.montecarlo":"Monte Carlo simulations",
-        "tools.reg":"Regressions / statistics",
-        "tools.sens":"Sensitivity analysis",
-        "tools.bin":"Binomial trees",
+        "tools.h2":"Tools & approach","tools.p":"Applied analytics for decisions: easy to grasp, hard to argue with.",
+        "tools.excel":"Excel (modeling)","tools.montecarlo":"Monte Carlo simulations","tools.reg":"Regressions / statistics","tools.sens":"Sensitivity analysis","tools.bin":"Binomial trees",
         "tools.note":"We use these tools to build stronger projections: explicit assumptions, ranges, scenarios and triggers to act early.",
 
-        "services.h2":"Services",
-        "services.p":"Building blocks combined per case. Core focus: business & financial model analysis, delivered end-to-end.",
-        "services.s1h":"Profitability & pricing",
-        "services.s1p":"Margins, mix and levers: product/channel/customer, cost structure, pricing and unit economics.",
-        "services.s2h":"Cash flow & working capital",
-        "services.s2p":"Scenario-based forecast: collections/payments, debt, policies, early alerts and follow-up cadence.",
-        "services.s3h":"Projects & valuation",
-        "services.s3p":"Project evaluation, business cases, economic due diligence and growth decision support (incl. M&A).",
+        "services.h2":"Services","services.p":"Building blocks combined per case. Core focus: business & financial model analysis, delivered end-to-end.",
+        "services.s1h":"Profitability & pricing","services.s1p":"Margins, mix and levers: product/channel/customer, cost structure, pricing and unit economics.",
+        "services.s2h":"Cash flow & working capital","services.s2p":"Scenario-based forecast: collections/payments, debt, policies, early alerts and follow-up cadence.",
+        "services.s3h":"Projects & valuation","services.s3p":"Project evaluation, business cases, economic due diligence and growth decision support (incl. M&A).",
 
-        "best.h3":"When this works best",
-        "best.p":"When you need fast clarity to decide: pricing/margin debates, cash-flow stress, investments, expansion or “growing without breaking”. If the problem is felt but not quantified, we unlock it within weeks.",
-        "best.price":"Monthly plans from <b>USD 500</b> (scope-dependent).",
-        "best.cta":"Book a conversation",
+        "method.h2":"How we work","method.p":"Simple, executive process: turn information into decisions.",
+        "method.aTitle":"Diagnosis","method.aText":"Short discovery, hypotheses and validation with real information. Identify drivers and quick wins vs. structural changes.",
+        "method.aB1":"Economic map","method.aS1":"Drivers, margins, structure and cash flow.",
+        "method.aB2":"Decision-grade information","method.aS2":"Define what to measure, how and how often.",
+        "method.bTitle":"Tailored solution","method.bText":"Scenario model + sensitivity. Actionable recommendations and an executive pack to decide.",
+        "method.bB1":"Scenarios + sensitivity","method.bS1":"Price, volume, costs, terms, FX.",
+        "method.bB2":"Decision triggers","method.bS2":"Ranges and thresholds to act early.",
+        "method.cTitle":"Follow-through","method.cText":"Light cadence. Adjustments, variance control and support for investment/growth decisions.",
+        "method.cB1":"Executive dashboard","method.cS1":"Few metrics, well defined and actionable.",
+        "method.cB2":"Decision support","method.cS2":"Growth, investment, financing, M&A when relevant.",
+        "method.dTitle":"Multidisciplinary team","method.dText":"We operate as a boutique: finance & business model leadership + complementary specialists (tax, legal, operations, commercial, systems) for specific project needs. One standard, one coordination layer.",
 
-        "method.h2":"How we work",
-        "method.p":"Simple, executive process: turn information into decisions.",
-        "method.aTitle":"Diagnosis",
-        "method.aText":"Short discovery, hypotheses and validation with real information. Identify drivers and quick wins vs. structural changes.",
-        "method.aB1":"Economic map",
-        "method.aS1":"Drivers, margins, structure and cash flow.",
-        "method.aB2":"Decision-grade information",
-        "method.aS2":"Define what to measure, how and how often.",
-        "method.bTitle":"Tailored solution",
-        "method.bText":"Scenario model + sensitivity. Actionable recommendations and an executive pack to decide.",
-        "method.bB1":"Scenarios + sensitivity",
-        "method.bS1":"Price, volume, costs, terms, FX.",
-        "method.bB2":"Decision triggers",
-        "method.bS2":"Ranges and thresholds to act early.",
-        "method.cTitle":"Follow-through",
-        "method.cText":"Light cadence. Adjustments, variance control and support for investment/growth decisions.",
-        "method.cB1":"Executive dashboard",
-        "method.cS1":"Few metrics, well defined and actionable.",
-        "method.cB2":"Decision support",
-        "method.cS2":"Growth, investment, financing, M&A when relevant.",
-        "method.dTitle":"Multidisciplinary team",
-        "method.dText":"We operate as a boutique: finance & business model leadership + complementary specialists (tax, legal, operations, commercial, systems) for specific project needs. One standard, one coordination layer.",
+        "ins.h2":"Insights","ins.p":"Short, actionable ideas for founders and leadership teams.",
+        "ins.i1h":"Profitability ≠ revenue","ins.i1p":"Growing without margin/cost structure often stresses cash flow. First step: contribution by product/channel/customer and hidden cross-subsidies.",
+        "ins.i2h":"Cash flow is designed","ins.i2p":"Forecast + collection/payment policies + follow-up discipline. With scenarios and triggers, you act before urgency.",
+        "ins.i3h":"Scenarios > opinions","ins.i3p":"When the business is sensitive, scenarios lead: ranges, sensitivity, explicit assumptions. From “I think” to “If X, we do Y”.",
+        "ins.i4h":"Less dashboard, more decisions","ins.i4p":"Dashboards matter only if they trigger action. Few metrics, clear owners and cadence. Visualization is last — decision system is first.",
 
-        "ins.h2":"Insights",
-        "ins.p":"Short, actionable ideas for founders and leadership teams.",
-        "ins.i1h":"Profitability ≠ revenue",
-        "ins.i1p":"Growing without margin/cost structure often stresses cash flow. First step: contribution by product/channel/customer and hidden cross-subsidies.",
-        "ins.i2h":"Cash flow is designed",
-        "ins.i2p":"Forecast + collection/payment policies + follow-up discipline. With scenarios and triggers, you act before urgency.",
-        "ins.i3h":"Scenarios > opinions",
-        "ins.i3p":"When the business is sensitive, scenarios lead: ranges, sensitivity, explicit assumptions. From “I think” to “If X, we do Y”.",
-        "ins.i4h":"Less dashboard, more decisions",
-        "ins.i4p":"Dashboards matter only if they trigger action. Few metrics, clear owners and cadence. Visualization is last — decision system is first.",
+        "vp.h3":"CFO-level, without full-time cost","vp.p":"For ambitious SMEs that can’t (or don’t want to) add a full-time CFO yet. Get tailored CFO-level judgement for a fraction of full-time cost.",
 
-        "contact.h2":"Let’s talk",
-        "contact.p":"Start with a short conversation: context, pain points, objectives and next steps. If it fits, we propose a tailored scope.",
-        "contact.leftH":"Contact",
-        "contact.leftP":"Email us (ES or EN). Reply within 24–48 business hours.",
-        "contact.emailLabel":"Email",
-        "contact.emailBtn":"Email us",
+        "offer.h3":"🎯 What we really sell",
+        "offer.p":"We don’t sell hours or spreadsheets. We sell strategic financial clarity, direction for growth decisions, a larger-company mindset, and the structure to scale without chaos.",
 
-        "cal.h3":"Book a conversation",
-        "cal.p":"Online · 45 min · Business days",
-        "cal.open":"Open in Calendly",
-        "cal.note":"Tip: in Calendly you can set the event brand/host name so your personal name doesn’t show.",
+        "plan.cta":"Find my ideal plan",
+        "plan1.badge":"Essential","plan1.h":"CFO Light / Essential Finance Direction","plan1.price":"USD 600–700 / month",
+        "plan1.for":"<b>For:</b> stable SMEs that want stronger financial judgement to decide better.",
+        "plan1.i1":"<b>Professional</b> cash-flow model","plan1.i2":"<b>Monthly</b> finance dashboard (margins, costs, true profitability)","plan1.i3":"<b>KPIs</b> tailored to the business",
+        "plan1.i4":"<b>2 meetings</b>/month (45m) + variance review","plan1.i5":"<b>Limited async</b> support (48h) + up to X questions/week",
+        "plan1.no":"<b>Excludes:</b> bank negotiations, deep restructures, commercial strategy, or special projects.",
 
+        "plan2.badge":"Growth","plan2.h":"Growth Partner / Strategic Finance Direction","plan2.price":"USD 1,000–1,500 / month",
+        "plan2.for":"<b>For:</b> fast-growing SMEs with weekly decisions. You’re part of the leadership team.",
+        "plan2.i1":"<b>Everything</b> in Plan 1","plan2.i2":"<b>Rolling</b> 6–12 month forecast + scenarios","plan2.i3":"<b>Financial triggers</b> (when to slow down / accelerate)",
+        "plan2.i4":"<b>Pricing</b> & contribution analysis + investment reviews","plan2.i5":"<b>1 meeting</b>/week + priority support (24–48h)",
+
+        "plan3.badge":"Top","plan3.h":"Strategic / Fractional CFO","plan3.price":"USD 1,800–2,500 / month",
+        "plan3.for":"<b>For:</b> larger or more complex organizations.",
+        "plan3.i1":"<b>Leadership</b> committee participation","plan3.i2":"<b>Coordination</b> with accountants / external firms",
+        "plan3.i3":"<b>Banks / investors</b> + financial structuring","plan3.i4":"<b>Investor deck</b> if raising capital","plan3.i5":"<b>Expansion</b> and growth evaluation",
+
+        "proj.h":"💥 Initial project (commercial key): Diagnosis + Model + Roadmap",
+        "proj.p":"<b>USD 1,500–4,000</b> (one-shot) · <b>2–4 weeks</b>. Filters non-serious leads, pays the setup, and positions you professionally. Then we move into a monthly plan.",
+        "proj.i1":"Financial x-ray + margin leakage detection","proj.i2":"Robust model (scenarios, sensitivity, assumptions)","proj.i3":"6-month roadmap + actionable recommendations",
+
+        "contact.h2":"Contact us","contact.p":"Let’s talk for 45 minutes to understand your context and define the ideal plan for your needs and ambition.",
+        "contact.leftH":"Contact","contact.leftP":"Email us (ES or EN). Reply within 24–48 business hours.",
+        "contact.emailLabel":"Email","contact.emailBtn":"Email us",
+
+        "cal.h3":"Book a conversation","cal.p":"Online · 45 min · Business days","cal.open":"Open in Calendly",
         "footer.note":"Strategy · Finance · Execution — decision-grade models."
       }
     };
@@ -1281,11 +780,10 @@
       const dict = I18N[lang];
       document.querySelectorAll("[data-i]").forEach(el=>{
         const k = el.getAttribute("data-i");
-        if(dict[k] !== undefined){ el.innerHTML = dict[k]; }
+        if(dict[k] !== undefined) el.innerHTML = dict[k];
       });
       document.getElementById("btn-es").classList.toggle("active", lang==="es");
       document.getElementById("btn-en").classList.toggle("active", lang==="en");
-
       const meta = document.querySelector('meta[name="description"]');
       if(meta){
         meta.setAttribute("content", lang==="es"
@@ -1294,10 +792,8 @@
         );
       }
     }
-
     document.getElementById("btn-es").addEventListener("click", ()=>applyLang("es"));
     document.getElementById("btn-en").addEventListener("click", ()=>applyLang("en"));
-
     const saved = localStorage.getItem("lang");
     const browser = (navigator.language || "es").toLowerCase().startsWith("en") ? "en" : "es";
     applyLang(saved || browser);
@@ -1306,19 +802,12 @@
 
     const menuBtn = document.getElementById("menuBtn");
     const drawer = document.getElementById("drawer");
-
-    function closeDrawer(){ drawer.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); }
-    function openDrawer(){ drawer.classList.add("open"); menuBtn.setAttribute("aria-expanded","true"); }
-
-    menuBtn.addEventListener("click", ()=>{
-      drawer.classList.contains("open") ? closeDrawer() : openDrawer();
-    });
-
+    const closeDrawer = ()=>{drawer.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false");};
+    const openDrawer  = ()=>{drawer.classList.add("open"); menuBtn.setAttribute("aria-expanded","true");};
+    menuBtn.addEventListener("click", ()=> drawer.classList.contains("open") ? closeDrawer() : openDrawer());
     drawer.querySelectorAll("[data-dclose]").forEach(a=>a.addEventListener("click", closeDrawer));
-    document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeDrawer(); });
-    document.addEventListener("click", (e)=>{
-      if(!drawer.contains(e.target) && !menuBtn.contains(e.target)) closeDrawer();
-    });
+    document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeDrawer(); });
+    document.addEventListener("click", e=>{ if(!drawer.contains(e.target) && !menuBtn.contains(e.target)) closeDrawer(); });
   </script>
 </body>
 </html>
