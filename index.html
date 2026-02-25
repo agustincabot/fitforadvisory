@@ -9,39 +9,57 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#f7f9fc; --bg2:#f2f6ff;
-      --panel:rgba(255,255,255,.82); --panel2:rgba(255,255,255,.94);
-      --text:#0e1325; --muted:#5a647a; --muted2:#7b859b;
+      --bg:#f7f9fc;
+      --bg2:#f2f6ff;
+      --panel:rgba(255,255,255,.82);
+      --panel2:rgba(255,255,255,.94);
+      --text:#0e1325;
+      --muted:#5a647a;
+      --muted2:#7b859b;
       --line:rgba(14,19,37,.10);
-      --shadow:0 20px 60px rgba(15,23,42,.08); --shadow2:0 14px 36px rgba(15,23,42,.10);
-      --accent:#16a34a; /* green */
-      --accent2:#2563eb; /* blue */
-      --good:#0f766e;
-      --r:22px; --r2:16px; --max:1160px;
+      --shadow:0 20px 60px rgba(15,23,42,.08);
+      --shadow2:0 14px 36px rgba(15,23,42,.10);
+
+      /* Palette (no red) */
+      --primary:#2563eb;     /* blue */
+      --accent:#16a34a;      /* green (success) */
+      --good:#0f766e;        /* teal */
+
+      --r:22px;
+      --r2:16px;
+      --max:1160px;
       --navH:66px;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text);
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
       background:
         linear-gradient(180deg,var(--bg) 0%,var(--bg2) 55%,var(--bg) 100%),
         radial-gradient(1200px 600px at 15% 10%, rgba(37,99,235,.06), transparent 60%),
-        radial-gradient(1200px 600px at 85% 20%, rgba(22,163,74,.06), transparent 62%);
+        radial-gradient(1200px 600px at 85% 20%, rgba(22,163,74,.05), transparent 62%);
       background-attachment:fixed;
       overflow-x:hidden;
     }
     body::before{
-      content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none; z-index:-1;
       background-image:
         linear-gradient(rgba(14,19,37,.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(14,19,37,.04) 1px, transparent 1px);
-      background-size:64px 64px; opacity:.20; mix-blend-mode:multiply;
+      background-size:64px 64px;
+      opacity:.18;
+      mix-blend-mode:multiply;
     }
+
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 22px;}
     .glass{
@@ -68,14 +86,17 @@
     }
     .brand{display:flex; align-items:center; gap:12px; min-width:220px;}
     .brand img{
-      height:42px; /* más grande */
+      height:48px; /* bigger logo */
       width:auto; display:block;
       filter: drop-shadow(0 8px 16px rgba(15,23,42,.10));
+    }
+    @media (max-width:520px){
+      .brand img{height:44px;}
     }
 
     nav ul{list-style:none; margin:0; padding:0; display:flex; align-items:center; gap:18px;}
     nav a{
-      text-decoration:none; color:var(--muted); font-weight:700; font-size:14px;
+      text-decoration:none; color:var(--muted); font-weight:800; font-size:14px;
       padding:8px 10px; border-radius:12px; transition:.2s;
     }
     nav a:hover{background: rgba(37,99,235,.08); color: var(--text);}
@@ -87,7 +108,7 @@
       color: var(--text);
       padding:10px 14px;
       border-radius: 14px;
-      font-weight:800;
+      font-weight:900;
       font-size:14px;
       cursor:pointer;
       transition: transform .15s ease, box-shadow .2s ease;
@@ -98,12 +119,12 @@
     }
     .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
     .btn.primary{
-      border-color: rgba(22,163,74,.26);
-      background: linear-gradient(180deg, rgba(22,163,74,.16), rgba(22,163,74,.08));
+      border-color: rgba(37,99,235,.24);
+      background: linear-gradient(180deg, rgba(37,99,235,.16), rgba(37,99,235,.08));
     }
     .btn.soft{
-      border-color: rgba(37,99,235,.18);
-      background: linear-gradient(180deg, rgba(37,99,235,.12), rgba(37,99,235,.06));
+      border-color: rgba(14,19,37,.14);
+      background: linear-gradient(180deg, rgba(14,19,37,.06), rgba(14,19,37,.03));
     }
 
     .lang{
@@ -182,14 +203,17 @@
     }
     .kicker .dot{
       width:8px; height:8px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 8px 18px rgba(22,163,74,.18);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 8px 18px rgba(37,99,235,.18);
     }
 
     h1{
-      font-family:Fraunces,serif;
-      font-weight:700; letter-spacing:-.02em; line-height:1.05;
-      font-size:56px; margin:16px 0 14px;
+      font-family: Fraunces, serif;
+      font-weight:700;
+      letter-spacing:-.02em;
+      line-height:1.05;
+      font-size:56px;
+      margin:16px 0 14px;
     }
     @media (max-width:520px){ h1{font-size:42px;} }
 
@@ -198,12 +222,12 @@
     .hero-ctas{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;}
     .note{margin-top:14px; color:var(--muted2); font-size:13px; line-height:1.6; max-width:92ch;}
 
-    /* Value box (green) */
+    /* Value line (green but subtle) */
     .value-line{
       margin-top:10px; padding:14px; border-radius:16px;
       border:1px solid rgba(22,163,74,.18);
-      background:linear-gradient(180deg, rgba(22,163,74,.10), rgba(255,255,255,.84));
-      box-shadow:0 12px 28px rgba(22,163,74,.08);
+      background:linear-gradient(180deg, rgba(22,163,74,.09), rgba(255,255,255,.86));
+      box-shadow:0 12px 28px rgba(22,163,74,.06);
       line-height:1.6; font-size:14px; max-width:92ch;
     }
     .value-line b{color:var(--text)}
@@ -215,7 +239,7 @@
     .pain-sub{color:var(--muted2); font-size:13px; margin-top:4px;}
     .grid4{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px;}
     .mini{
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.86);
       border:1px solid var(--line);
       border-radius: 16px;
       padding:14px 14px 12px;
@@ -247,7 +271,7 @@
     @media (max-width:980px){ .cards3{grid-template-columns:1fr;} }
     .card{
       padding:18px; border-radius:var(--r);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.86);
       border:1px solid var(--line);
       box-shadow: 0 14px 34px rgba(15,23,42,.06);
     }
@@ -257,7 +281,7 @@
       width:42px; height:42px; border-radius:14px;
       display:grid; place-items:center;
       border:1px solid rgba(14,19,37,.10);
-      background: linear-gradient(180deg, rgba(37,99,235,.10), rgba(255,255,255,.75));
+      background: linear-gradient(180deg, rgba(37,99,235,.10), rgba(255,255,255,.78));
     }
     .ico svg{ width:22px; height:22px; opacity:.95; }
 
@@ -266,7 +290,7 @@
     @media (max-width:980px){ .steps{grid-template-columns:1fr;} }
     .step{
       padding:18px; border-radius:var(--r);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.86);
       border:1px solid var(--line);
       box-shadow: 0 14px 34px rgba(15,23,42,.06);
     }
@@ -275,7 +299,7 @@
       font-weight:900; font-size:13px;
       color: rgba(14,19,37,.86);
       border:1px solid rgba(14,19,37,.10);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.86);
       padding:10px 12px; border-radius:999px;
       margin-bottom:10px;
     }
@@ -290,7 +314,7 @@
     .bullet{
       padding:12px; border-radius:16px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.90);
       display:flex; gap:12px; align-items:flex-start;
     }
     .tick{
@@ -309,7 +333,7 @@
     @media (max-width:980px){ .insights{grid-template-columns:1fr;} }
     .ins{
       padding:18px; border-radius:var(--r);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.86);
       border:1px solid var(--line);
       box-shadow: 0 14px 34px rgba(15,23,42,.06);
     }
@@ -320,7 +344,7 @@
     .tools{
       padding:18px; border-radius:var(--r);
       border:1px solid rgba(37,99,235,.16);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.86);
       box-shadow: 0 14px 34px rgba(15,23,42,.06);
     }
     .tools h3{margin:0 0 6px; font-size:18px;}
@@ -329,7 +353,7 @@
     .chip{
       padding:10px 12px; border-radius:999px;
       border:1px solid rgba(14,19,37,.10);
-      background: rgba(255,255,255,.90);
+      background: rgba(255,255,255,.92);
       font-weight:900; font-size:13px;
       color: rgba(14,19,37,.84);
       display:inline-flex; align-items:center; gap:8px;
@@ -337,22 +361,34 @@
     }
     .chip .dot{
       width:8px; height:8px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent2), var(--good));
-      box-shadow: 0 10px 18px rgba(37,99,235,.18);
+      background: linear-gradient(135deg, var(--primary), var(--good));
+      box-shadow: 0 10px 18px rgba(37,99,235,.16);
     }
     .tools small{display:block; margin-top:10px; color:var(--muted2); line-height:1.6; font-size:13px; max-width:100ch;}
 
-    /* Value prop after insights (green) */
+    /* Offer head (before VP & plans) */
+    .offer-head{
+      margin-top:18px;
+      padding:18px;
+      border-radius: var(--r);
+      border:1px solid rgba(37,99,235,.16);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 14px 34px rgba(15,23,42,.06);
+    }
+    .offer-head h3{margin:0 0 6px; font-size:20px;}
+    .offer-head p{margin:0; color:var(--muted); line-height:1.7; max-width:100ch;}
+
+    /* Value prop after insights */
     .vp-after{
       padding:18px; border-radius:var(--r);
       border:1px solid rgba(22,163,74,.18);
-      background: linear-gradient(180deg, rgba(22,163,74,.10), rgba(255,255,255,.84));
-      box-shadow: 0 14px 34px rgba(22,163,74,.07);
+      background: linear-gradient(180deg, rgba(22,163,74,.09), rgba(255,255,255,.86));
+      box-shadow: 0 14px 34px rgba(22,163,74,.06);
     }
     .vp-after h3{margin:0 0 8px; font-size:18px;}
     .vp-after p{margin:0; color:var(--muted); line-height:1.7;}
 
-    /* Plans (like your example cards) */
+    /* Plans */
     .plans-head{margin-top:18px;}
     .plans-head h3{margin:0 0 6px; font-size:18px;}
     .plans-head p{margin:0; color:var(--muted); line-height:1.6; max-width:95ch;}
@@ -369,7 +405,7 @@
       border-radius: 20px;
       overflow:hidden;
       border:1px solid rgba(14,19,37,.10);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.86);
       box-shadow: 0 14px 34px rgba(15,23,42,.06);
     }
     .plan-top{
@@ -377,8 +413,33 @@
       background: linear-gradient(180deg, rgba(14,19,37,.92), rgba(14,19,37,.86));
       color:#fff;
     }
-    .plan-top .title{font-size:22px; font-weight:900; letter-spacing:-.02em; margin:0 0 6px;}
-    .plan-top .sub{margin:0; opacity:.85; font-weight:700; font-size:13px; line-height:1.45;}
+    .plan-top .head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .plan-top .title{
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:-.02em;
+      margin:0;
+      line-height:1.15;
+      max-width: 22ch;
+    }
+    .plan-top .badge{
+      flex:0 0 auto;
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      color:#0b1b42;
+      background: rgba(255,255,255,.90);
+      border:1px solid rgba(255,255,255,.55);
+      white-space:nowrap;
+    }
+    .plan-top .sub{margin:10px 0 0; opacity:.85; font-weight:700; font-size:13px; line-height:1.45;}
+
     .plan-mid{padding:14px 18px 16px;}
     .plan-mid .price{
       margin:0 0 12px;
@@ -394,12 +455,12 @@
       font-weight:900;
       text-decoration:none;
       border:1px solid rgba(37,99,235,.18);
-      background: linear-gradient(180deg, rgba(37,99,235,.12), rgba(37,99,235,.06));
+      background: linear-gradient(180deg, rgba(37,99,235,.14), rgba(37,99,235,.06));
       box-shadow: 0 10px 22px rgba(15,23,42,.05);
     }
     .plan-mid .cta.primary{
-      border-color: rgba(22,163,74,.26);
-      background: linear-gradient(180deg, rgba(22,163,74,.18), rgba(22,163,74,.08));
+      border-color: rgba(37,99,235,.24);
+      background: linear-gradient(180deg, rgba(37,99,235,.18), rgba(37,99,235,.08));
     }
     .plan-feats{padding:0 18px 18px; display:grid; gap:10px;}
     .feat{
@@ -407,7 +468,7 @@
       padding:12px;
       border-radius:14px;
       border:1px solid rgba(14,19,37,.08);
-      background: rgba(255,255,255,.88);
+      background: rgba(255,255,255,.92);
     }
     .feat .ic{
       width:34px; height:34px; border-radius:12px;
@@ -420,13 +481,23 @@
     .feat p{margin:0; color:var(--muted); line-height:1.55;}
     .feat b{color:var(--text);}
 
-    /* Project one-shot */
+    .plan.featured{
+      transform: translateY(-4px);
+      border-color: rgba(37,99,235,.22);
+      box-shadow: 0 20px 60px rgba(37,99,235,.10);
+    }
+    @media (max-width:980px){ .plan.featured{transform:none;} }
+
+    /* Project one-shot (blue background) */
     .project{
       margin-top:14px;
-      padding:18px; border-radius:var(--r);
-      border:1px solid rgba(22,163,74,.18);
-      background: linear-gradient(180deg, rgba(22,163,74,.08), rgba(255,255,255,.84));
-      box-shadow: 0 14px 34px rgba(22,163,74,.07);
+      padding:18px;
+      border-radius:var(--r);
+      border:1px solid rgba(37,99,235,.18);
+      background:
+        radial-gradient(700px 280px at 20% 0%, rgba(37,99,235,.14), transparent 55%),
+        linear-gradient(180deg, rgba(37,99,235,.10), rgba(255,255,255,.86));
+      box-shadow: 0 14px 34px rgba(37,99,235,.08);
     }
     .project h4{margin:0 0 8px; font-size:18px;}
     .project p{margin:0; color:var(--muted); line-height:1.7;}
@@ -437,7 +508,7 @@
     @media (max-width:980px){ .contact-grid{grid-template-columns:1fr;} }
     .contact-card{
       padding:18px; border-radius:var(--r);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.86);
       border:1px solid var(--line);
       box-shadow: 0 14px 34px rgba(15,23,42,.06);
     }
@@ -447,10 +518,10 @@
       display:flex; align-items:center; gap:10px;
       padding:12px; border-radius:16px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.90);
-      margin:12px 0; font-weight:800;
+      background: rgba(255,255,255,.92);
+      margin:12px 0; font-weight:900;
     }
-    .pill small{display:block; font-weight:800; color:var(--muted2);}
+    .pill small{display:block; font-weight:900; color:var(--muted2);}
     iframe{border:0; width:100%; border-radius:16px; background:#fff; min-height:620px;}
     @media (max-width:520px){ iframe{min-height:720px;} }
 
@@ -585,9 +656,7 @@
         <div class="sec-head">
           <div>
             <h2 data-i="services.h2">Servicios</h2>
-            <p data-i="services.p">
-              Bloques que combinamos según tu caso. Foco en análisis económico-financiero y modelo de negocio, con delivery punta a punta.
-            </p>
+            <p data-i="services.p">Bloques que combinamos según tu caso. Foco en análisis económico-financiero y modelo de negocio, con delivery punta a punta.</p>
           </div>
         </div>
 
@@ -703,7 +772,7 @@
       </div>
     </section>
 
-    <!-- INSIGHTS + TOOLS + PLANS -->
+    <!-- INSIGHTS + TOOLS + OFFER + PLANS -->
     <section id="insights">
       <div class="wrap">
         <div class="sec-head">
@@ -734,7 +803,6 @@
 
         <div style="height:18px"></div>
 
-        <!-- Tools (after insights) -->
         <div class="tools">
           <h3 data-i="tools.h3">Herramientas y enfoque</h3>
           <p data-i="tools.p">Analítica aplicada para decisiones: rápido de entender, difícil de refutar.</p>
@@ -748,12 +816,20 @@
             <div class="chip"><span class="dot" aria-hidden="true"></span><span data-i="tools.reg">Regresiones / estadística</span></div>
             <div class="chip"><span class="dot" aria-hidden="true"></span><span data-i="tools.sens">Análisis de sensibilidad</span></div>
             <div class="chip"><span class="dot" aria-hidden="true"></span><span data-i="tools.bin">Árboles binomiales</span></div>
+            <div class="chip"><span class="dot" aria-hidden="true"></span><span data-i="tools.bs">Black–Scholes</span></div>
           </div>
 
           <small data-i="tools.note">Usamos estas herramientas para proyecciones más contundentes: supuestos explícitos, rangos, escenarios y gatillos para decidir a tiempo.</small>
         </div>
 
         <div style="height:18px"></div>
+
+        <div class="offer-head">
+          <h3 data-i="offer.h3">La oferta (lo que estás comprando)</h3>
+          <p data-i="offer.p">No es “consultoría pesada”. Es dirección financiera aplicada: claridad + modelo + gatillos para decidir y ejecutar. Diseñado para PyMEs con ambición, sin costo full-time.</p>
+        </div>
+
+        <div style="height:14px"></div>
 
         <div class="vp-after">
           <h3 data-i="vp.h3">CFO-level, sin costo full-time</h3>
@@ -770,7 +846,10 @@
           <!-- Plan 1 -->
           <div class="plan">
             <div class="plan-top">
-              <div class="title" data-i="plan1.t">CFO Light</div>
+              <div class="head">
+                <div class="title" data-i="plan1.t">CFO Light</div>
+                <div class="badge" data-i="plan1.badge">Esencial</div>
+              </div>
               <p class="sub" data-i="plan1.s">Dirección financiera esencial para ordenar y decidir mejor.</p>
             </div>
             <div class="plan-mid">
@@ -800,9 +879,12 @@
           </div>
 
           <!-- Plan 2 -->
-          <div class="plan">
+          <div class="plan featured">
             <div class="plan-top">
-              <div class="title" data-i="plan2.t">Growth Partner</div>
+              <div class="head">
+                <div class="title" data-i="plan2.t">Growth Partner</div>
+                <div class="badge" data-i="plan2.badge">Crecimiento</div>
+              </div>
               <p class="sub" data-i="plan2.s">Para empresas en crecimiento: escenarios, gatillos y ritmo semanal.</p>
             </div>
             <div class="plan-mid">
@@ -834,7 +916,10 @@
           <!-- Plan 3 -->
           <div class="plan">
             <div class="plan-top">
-              <div class="title" data-i="plan3.t">CFO Externo</div>
+              <div class="head">
+                <div class="title" data-i="plan3.t">CFO Externo</div>
+                <div class="badge" data-i="plan3.badge">Top</div>
+              </div>
               <p class="sub" data-i="plan3.s">Más complejidad: bancos, estructura financiera, expansión y comité.</p>
             </div>
             <div class="plan-mid">
@@ -869,7 +954,7 @@
           <p data-i="proj.p"><b>USD 1.500–4.000</b> (one-shot) · <b>2–4 semanas</b>. Filtra clientes poco serios, paga el setup y te posiciona profesional. Luego migramos a un plan mensual.</p>
           <ul>
             <li data-i="proj.i1">Radiografía financiera + identificación de fugas de margen</li>
-            <li data-i="proj.i2">Modelo profesional (escenarios, sensibilidad, supuestos)</li>
+            <li data-i="proj.i2">Modelo robusto (escenarios, sensibilidad, supuestos)</li>
             <li data-i="proj.i3">Roadmap de 6 meses + recomendaciones accionables</li>
           </ul>
         </div>
@@ -973,8 +1058,16 @@
 
         "tools.h3":"Herramientas y enfoque",
         "tools.p":"Analítica aplicada para decisiones: rápido de entender, difícil de refutar.",
-        "tools.excel":"Excel (modelización)","tools.mc":"Simulaciones Monte Carlo","tools.reg":"Regresiones / estadística","tools.sens":"Análisis de sensibilidad","tools.bin":"Árboles binomiales",
+        "tools.excel":"Excel (modelización)",
+        "tools.mc":"Simulaciones Monte Carlo",
+        "tools.reg":"Regresiones / estadística",
+        "tools.sens":"Análisis de sensibilidad",
+        "tools.bin":"Árboles binomiales",
+        "tools.bs":"Black–Scholes",
         "tools.note":"Usamos estas herramientas para proyecciones más contundentes: supuestos explícitos, rangos, escenarios y gatillos para decidir a tiempo.",
+
+        "offer.h3":"La oferta (lo que estás comprando)",
+        "offer.p":"No es “consultoría pesada”. Es dirección financiera aplicada: claridad + modelo + gatillos para decidir y ejecutar. Diseñado para PyMEs con ambición, sin costo full-time.",
 
         "vp.h3":"CFO-level, sin costo full-time",
         "vp.p":"Para PyMEs con ambición de crecer que todavía no pueden (o no quieren) sumar un CFO full-time. Accedé a una mirada de nivel CFO, a medida y por fracción del costo de un recurso full-time.",
@@ -983,17 +1076,17 @@
         "plans.p":"Comparativo simple. Después lo ajustamos a tu contexto en la primera conversación.",
         "plan.cta":"Definir mi plan ideal",
 
-        "plan1.t":"CFO Light","plan1.s":"Dirección financiera esencial para ordenar y decidir mejor.","plan1.price":"USD 600–700 / mes",
+        "plan1.t":"CFO Light","plan1.s":"Dirección financiera esencial para ordenar y decidir mejor.","plan1.price":"USD 600–700 / mes","plan1.badge":"Esencial",
         "plan1.f1":"<b>Flujo de fondos</b> profesional + tablero mensual.","plan1.f2":"<b>2 reuniones</b>/mes + revisión de desvíos.","plan1.f3":"<b>Soporte async</b> acotado (48h).",
-        "plan2.t":"Growth Partner","plan2.s":"Para empresas en crecimiento: escenarios, gatillos y ritmo semanal.","plan2.price":"USD 1.000–1.500 / mes",
+        "plan2.t":"Growth Partner","plan2.s":"Para empresas en crecimiento: escenarios, gatillos y ritmo semanal.","plan2.price":"USD 1.000–1.500 / mes","plan2.badge":"Crecimiento",
         "plan2.f1":"<b>Todo</b> lo del CFO Light.","plan2.f2":"<b>Forecast rolling</b> 6–12 meses + escenarios.","plan2.f3":"<b>1 reunión</b>/semana + soporte prioritario.",
-        "plan3.t":"CFO Externo","plan3.s":"Más complejidad: bancos, estructura financiera, expansión y comité.","plan3.price":"USD 1.800–2.500 / mes",
+        "plan3.t":"CFO Externo","plan3.s":"Más complejidad: bancos, estructura financiera, expansión y comité.","plan3.price":"USD 1.800–2.500 / mes","plan3.badge":"Top",
         "plan3.f1":"<b>Comité directivo</b> + gobierno de decisión.","plan3.f2":"<b>Bancos / inversores</b> + estructura financiera.","plan3.f3":"<b>Expansión</b> y decisiones estratégicas.",
 
         "proj.h":"💥 Proyecto inicial (clave comercial): Diagnóstico + Modelo + Roadmap",
         "proj.p":"<b>USD 1.500–4.000</b> (one-shot) · <b>2–4 semanas</b>. Filtra clientes poco serios, paga el setup y te posiciona profesional. Luego migramos a un plan mensual.",
         "proj.i1":"Radiografía financiera + identificación de fugas de margen",
-        "proj.i2":"Modelo profesional (escenarios, sensibilidad, supuestos)",
+        "proj.i2":"Modelo robusto (escenarios, sensibilidad, supuestos)",
         "proj.i3":"Roadmap de 6 meses + recomendaciones accionables",
 
         "contact.h2":"Contactanos","contact.p":"Conversemos 45 minutos para entender tu contexto y definir cuál es el plan ideal según tu necesidad y nivel de ambición.",
@@ -1043,8 +1136,16 @@
 
         "tools.h3":"Tools & approach",
         "tools.p":"Applied analytics for decisions: easy to grasp, hard to argue with.",
-        "tools.excel":"Excel (modeling)","tools.mc":"Monte Carlo simulations","tools.reg":"Regressions / statistics","tools.sens":"Sensitivity analysis","tools.bin":"Binomial trees",
+        "tools.excel":"Excel (modeling)",
+        "tools.mc":"Monte Carlo simulations",
+        "tools.reg":"Regressions / statistics",
+        "tools.sens":"Sensitivity analysis",
+        "tools.bin":"Binomial trees",
+        "tools.bs":"Black–Scholes",
         "tools.note":"We use these tools to build stronger projections: explicit assumptions, ranges, scenarios and triggers to act early.",
+
+        "offer.h3":"The offer (what you’re actually buying)",
+        "offer.p":"Not “heavy consulting”. It’s applied finance leadership: clarity + a model + triggers to decide and execute. Built for ambitious SMEs, without full-time cost.",
 
         "vp.h3":"CFO-level, without full-time cost",
         "vp.p":"For ambitious SMEs that can’t (or don’t want to) add a full-time CFO yet. Get tailored CFO-level judgement for a fraction of full-time cost.",
@@ -1053,11 +1154,11 @@
         "plans.p":"A simple comparison. We’ll tailor it to your context in the first conversation.",
         "plan.cta":"Find my ideal plan",
 
-        "plan1.t":"CFO Light","plan1.s":"Essential finance direction to bring order and better decisions.","plan1.price":"USD 600–700 / month",
+        "plan1.t":"CFO Light","plan1.s":"Essential finance direction to bring order and better decisions.","plan1.price":"USD 600–700 / month","plan1.badge":"Essential",
         "plan1.f1":"<b>Professional</b> cash-flow model + monthly dashboard.","plan1.f2":"<b>2 meetings</b>/month + variance review.","plan1.f3":"<b>Limited async</b> support (48h).",
-        "plan2.t":"Growth Partner","plan2.s":"For growth: scenarios, triggers and a weekly cadence.","plan2.price":"USD 1,000–1,500 / month",
+        "plan2.t":"Growth Partner","plan2.s":"For growth: scenarios, triggers and a weekly cadence.","plan2.price":"USD 1,000–1,500 / month","plan2.badge":"Growth",
         "plan2.f1":"<b>Everything</b> in CFO Light.","plan2.f2":"<b>Rolling</b> 6–12 month forecast + scenarios.","plan2.f3":"<b>1 meeting</b>/week + priority support.",
-        "plan3.t":"Fractional CFO","plan3.s":"More complexity: banks, capital structure, expansion and leadership.","plan3.price":"USD 1,800–2,500 / month",
+        "plan3.t":"Fractional CFO","plan3.s":"More complexity: banks, capital structure, expansion and leadership.","plan3.price":"USD 1,800–2,500 / month","plan3.badge":"Top",
         "plan3.f1":"<b>Leadership</b> committee + decision governance.","plan3.f2":"<b>Banks / investors</b> + financial structuring.","plan3.f3":"<b>Expansion</b> and strategic decisions.",
 
         "proj.h":"💥 Initial project (commercial key): Diagnosis + Model + Roadmap",
@@ -1095,14 +1196,13 @@
       }
     }
 
-    // language init
     document.getElementById("btn-es").addEventListener("click", ()=>applyLang("es"));
     document.getElementById("btn-en").addEventListener("click", ()=>applyLang("en"));
+
     const saved = localStorage.getItem("lang");
     const browser = (navigator.language || "es").toLowerCase().startsWith("en") ? "en" : "es";
     applyLang(saved || browser);
 
-    // year
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // mobile drawer
